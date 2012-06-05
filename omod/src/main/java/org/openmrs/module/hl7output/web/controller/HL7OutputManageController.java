@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * The main controller.
  */
 @Controller
-public class  Hl7OutputManageController {
+public class  HL7OutputManageController {
 	
 	protected final Log log = LogFactory.getLog(getClass());
 	

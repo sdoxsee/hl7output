@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+
+	<class name="org.openmrs.module.model.MatchingEncounters" table="RHEASHRadapter_matching_encounters">
+
+		<id name="matchingEncountersId" type="int" column="matching_encounters_id" 
+			unsaved-value="0">
+				<generator class="identity" />
+		</id>
+
+		<discriminator column="matching_encounters_id" insert="false" />
+		
+		<property name="encounterId" type="java.lang.Integer" 
+			column="encounter_id" not-null="false" length="10" />
+		
+		<many-to-one name="getEncounterLog" class="org.openmrs.module.model.GetEncounterLog" not-null="true">
+			<column name="get_request_id" />
+		</many-to-one>
+		
+	</class>
+</hibernate-mapping>

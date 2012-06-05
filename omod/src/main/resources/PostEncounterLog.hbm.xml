@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+
+	<class name="org.openmrs.module.model.PostEncounterLog" table="RHEASHRadapter_post_encounter_log">
+
+		<id name="postRequestId" type="int" column="post_Request_Id" 
+			unsaved-value="null">
+				<generator class="native" />
+		</id>
+
+		<discriminator column="post_Request_Id" insert="false" />
+		
+		<property name="enterpriseId" type="java.lang.String" 
+			column="enterprise_Id" not-null="false" length="15" />
+			
+		<property name="hl7data" type="java.lang.String" 
+			column="hl7_data" not-null="false" length="16777215" />
+			
+ 		<property name="dateCreated" type="java.util.Date" 
+			column="date_created" not-null="true" />
+		
+		<property name="valid" type="boolean" not-null="true" />
+			
+		<property name="errorMessage" type="java.lang.String" 
+			column="error_message" not-null="false" length="16777215" />
+			
+		<property name="userId" type="int" 
+			column="user_id" not-null="true" />
+		
+	</class>
+</hibernate-mapping>

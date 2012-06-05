@@ -13,7 +13,8 @@
  */
 package org.openmrs.module.hl7output.api;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
 import org.openmrs.api.context.Context;
 import org.openmrs.test.BaseModuleContextSensitiveTest;
@@ -23,7 +24,7 @@ import org.openmrs.test.BaseModuleContextSensitiveTest;
  */
 public class  HL7OutputServiceTest extends BaseModuleContextSensitiveTest {
 	
-	@Test
+	@Test 
 	public void shouldSetupContext() {
 		assertNotNull(Context.getService(HL7OutputService.class));
 	}

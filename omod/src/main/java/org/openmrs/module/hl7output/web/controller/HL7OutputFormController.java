@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping(value = "module/hl7output/basicmoduleLink.form")
-public class Hl7OutputFormController{
+public class HL7OutputFormController{
 	
 	/** Logger for this class and subclasses */
 	protected final Log log = LogFactory.getLog(getClass());

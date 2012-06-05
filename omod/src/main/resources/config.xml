@@ -1,53 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//OpenMRS//DTD OpenMRS Config 1.2//EN" "http://resources.openmrs.org/doctype/config-1.2.dtd">
 
 <module configVersion="1.2">
-
-	<!-- Module Properties -->
-	<id>${project.parent.artifactId}</id>
-	<name>${project.parent.name}</name>
-	<version>${project.parent.version}</version>
-	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
-	<author>sdoxsee</author>
+	
+	<!-- Base Module Properties -->
+	<id>@MODULE_ID@</id>
+	<name>@MODULE_NAME@</name>
+	<version>@MODULE_VERSION@</version>
+	<package>@MODULE_PACKAGE@</package>
+	<author>suranga</author>
 	<description>
-		${project.parent.description}
+		Jembi module to provide web services for the RHEA Shared Health Record 
 	</description>
-	<updateURL>https://modules.openmrs.org/modules/download/${project.parent.artifactId}/update.rdf</updateURL>
-	<require_version>${openMRSVersion}</require_version>
-	<!-- / Module Properties -->
 
+	<activator>org.openmrs.module.RHEASHRadapter.RHEA_SHR_WSActivator</activator>
 	
-	<!-- Module Activator -->
-	<activator>${project.parent.groupId}.${project.parent.artifactId}.HL7OutputActivator</activator>
+	<updateURL>https://modules.openmrs.org/modules/download/@MODULE_ID@/update.rdf</updateURL>
+	<!-- /Base Module Properties -->
 	
+	<require_version>1.8.3</require_version>
 	
-	<!-- Adds link to admin page -->
+	<require_modules>
+		<require_module>org.openmrs.module.webservices.rest</require_module>
+	</require_modules>
+	
+	<!-- Extensions -->
+
 	<extension>
 		<point>org.openmrs.admin.list</point>
-		<class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.AdminList</class>
+		<class>org.openmrs.module.extension.html.AdminList</class>
 	</extension>
-	
-	<!-- Maps hibernate file's, if present -->
-	<mappingFiles>
-				
-		HL7Output.hbm.xml
-				
-	</mappingFiles>
 
+	
 	<!-- Internationalization -->
-	<!-- All message codes should start with ${project.parent.artifactId}. -->
+	<!-- All message codes should start with @MODULE_ID@.* -->
 	<messages>
 		<lang>en</lang>
 		<file>messages.properties</file>
 	</messages>
-	<messages>
-		<lang>fr</lang>
-		<file>messages_fr.properties</file>
-	</messages>
-	<messages>
-		<lang>es</lang>
-		<file>messages_es.properties</file>
-	</messages>
 	<!-- /Internationalization -->
-
+	
+	<mappingFiles>
+		PostEncounterLog.hbm.xml
+		GetEncounterLog.hbm.xml
+		MatchingEncounters.hbm.xml
+	</mappingFiles>
+	
 </module>
 

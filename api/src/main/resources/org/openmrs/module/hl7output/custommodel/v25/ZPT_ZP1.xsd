@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Edited with XMLSpy v2007 sp2 (http://www.altova.com) -->
+<n:ZPT_ZP1 xmlns:n="urn:hl7-org:v2xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:hl7-org:v2xml urn:ZPT_ZP1.xsd">
+	<n:MSH>
+		<n:MSH.1 Type="ST" Item="1" LongName="Field Separator">String</n:MSH.1>
+		<n:MSH.2 Type="ST" Item="2" LongName="Encoding Characters">String</n:MSH.2>
+		<n:MSH.3 Table="HL70361" Type="HD" Item="3" LongName="Sending Application">
+			<n:HD.1 Table="HL70300" Type="IS" LongName="Namespace ID">String</n:HD.1>
+			<n:HD.2 Type="ST" LongName="Universal ID">String</n:HD.2>
+			<n:HD.3 Table="HL70301" Type="ID" LongName="Universal ID Type">String</n:HD.3>
+		</n:MSH.3>
+		<n:MSH.4 Table="HL70362" Type="HD" Item="4" LongName="Sending Facility">
+			<n:HD.1 Table="HL70300" Type="IS" LongName="Namespace ID">String</n:HD.1>
+			<n:HD.2 Type="ST" LongName="Universal ID">String</n:HD.2>
+			<n:HD.3 Table="HL70301" Type="ID" LongName="Universal ID Type">String</n:HD.3>
+		</n:MSH.4>
+		<n:MSH.5 Table="HL70361" Type="HD" Item="5"
+			LongName="Recieving Application">
+			<n:HD.1 Table="HL70300" Type="IS" LongName="Namespace ID">String</n:HD.1>
+			<n:HD.2 Type="ST" LongName="Universal ID">String</n:HD.2>
+			<n:HD.3 Table="HL70301" Type="ID" LongName="Universal ID Type">String</n:HD.3>
+		</n:MSH.5>
+		<n:MSH.6 Table="HL70362" Type="HD" Item="6" LongName="Receiving Facility">
+			<n:HD.1 Table="HL70300" Type="IS" LongName="Namespace ID">String</n:HD.1>
+			<n:HD.2 Type="ST" LongName="Universal ID">String</n:HD.2>
+			<n:HD.3 Table="HL70301" Type="ID" LongName="Universal ID Type">String</n:HD.3>
+		</n:MSH.6>
+		<n:MSH.7 Type="TS" Item="7" LongName="Date/Time Of Message">
+			<n:TS.1 Type="DTM" LongName="Time">String</n:TS.1>
+		</n:MSH.7>
+		<n:MSH.9 Type="MSG" Item="9" LongName="Message Type">
+			<n:MSG.1 Table="HL70076" Type="ID" LongName="Message Code">String</n:MSG.1>
+			<n:MSG.2 Table="HL70003" Type="ID" LongName="Trigger Event">String</n:MSG.2>
+			<n:MSG.3 Table="HL70354" Type="ID" LongName="Message Structure">String</n:MSG.3>
+		</n:MSH.9>
+		<n:MSH.10 Type="ST" Item="10" LongName="Message Control ID">String</n:MSH.10>
+		<n:MSH.11 Type="PT" Item="11" LongName="Processing ID">
+			<n:PT.1 Table="HL70103" Type="ID" LongName="Processing ID">String</n:PT.1>
+			<n:PT.2 Table="HL70207" Type="ID" LongName="Processing Mode">String</n:PT.2>
+		</n:MSH.11>
+		<n:MSH.12 Type="VID" Item="12" LongName="Version ID">
+			<n:VID.1 Table="HL70104" Type="ID" LongName="Version ID">String</n:VID.1>
+		</n:MSH.12>
+		<n:MSH.17 Table="HL70399" Type="ID" Item="17" LongName="Country Code">String</n:MSH.17>
+		<n:MSH.18 Table="HL70211" Type="ID" Item="692" LongName="Character Set">String</n:MSH.18>
+		<n:MSH.19 Type="CE" Item="693" LongName="Principal Language Of Message">
+			<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+			<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+			<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+			<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+			<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+			<n:CE.6 Table="HL70396" Type="ID" LongName="Name of Alternate Coding System">String</n:CE.6>
+		</n:MSH.19>
+		<n:MSH.20 Table="HL70356" Type="ID" Item="1317"
+			LongName="Alternate Character Set Handling
+Scheme">String</n:MSH.20>
+		<n:MSH.21 Type="EI" Item="1598" LongName="Message Profile Identifier">
+			<n:EI.1 Type="ST" LongName="Entity Identifier">String</n:EI.1>
+		</n:MSH.21>
+	</n:MSH>
+	<n:SFT>
+		<n:SFT.1 Type="XON" Item="1834" LongName="Software Vendor Organization">
+			Extended composite name and
+			identification number for
+			organizations
+			<n:XON.1 Type="ST" LongName="Organization Name">String</n:XON.1>
+			<n:XON.10 Type="ST" LongName="Organization Identifier">String</n:XON.10>
+		</n:SFT.1>
+		<n:SFT.2 Type="ST" Item="1835"
+			LongName="Software Certified Version or Release Number">String</n:SFT.2>
+		<n:SFT.3 Type="ST" Item="1836" LongName="Software Product Name">String</n:SFT.3>
+		<n:SFT.4 Type="ST" Item="1837" LongName="Software Binary ID">String</n:SFT.4>
+		<n:SFT.6 Type="TS" Item="1839" LongName="Software Install Date">
+			<n:TS.1 Type="DTM" LongName="Time">String</n:TS.1>
+		</n:SFT.6>
+	</n:SFT>
+	<n:EVN>
+		<n:EVN.2 Type="TS" Item="100" LongName="Recorded Date/Time">
+			<n:TS.1 Type="DTM" LongName="Time">String</n:TS.1>
+		</n:EVN.2>
+		<n:EVN.7 Type="HD" Item="1534" LongName="Event Facility">
+			<n:HD.1 Table="HL70300" Type="IS" LongName="Namespace ID">String</n:HD.1>
+			<n:HD.2 Type="ST" LongName="Universal ID">String</n:HD.2>
+			<n:HD.3 Table="HL70301" Type="ID" LongName="Universal ID Type">String</n:HD.3>
+		</n:EVN.7>
+	</n:EVN>
+	<n:PID>
+		<n:PID.1 Type="SI" Item="104" LongName="Set ID - PID">Sequence ID</n:PID.1>
+		<n:PID.3 Type="CX" Item="106" LongName="Patient Identifier List">
+			<n:CX.1 Type="ST" LongName="ID Number">String</n:CX.1>
+			<n:CX.5 Table="HL70203" Type="ID" LongName="Identifier Type Code">String</n:CX.5>
+			<n:CX.6 Table="HL70362" Type="HD" LongName="Assigning Facility">
+				<n:HD.1 Table="HL70362" Type="IS" LongName="Namespace ID">String</n:HD.1>
+				<n:HD.2 Type="ST" LongName="Universal ID">String</n:HD.2>
+				<n:HD.3 Table="HL70301" Type="ID" LongName="Universal ID Type">String</n:HD.3>
+			</n:CX.6>
+		</n:PID.3>
+		<n:PID.5 Type="XPN" Item="108" LongName="Patient Name">
+			<n:XPN.1 Type="FN" LongName="Family Name">
+				<n:FN.1 Type="ST" LongName="Surname">String</n:FN.1>
+			</n:XPN.1>
+			<n:XPN.2 Type="ST" LongName="Given Name">String</n:XPN.2>
+			<n:XPN.3 Type="ST"
+				LongName="Second and Further Given Names or Initials Thereof">String</n:XPN.3>
+		</n:PID.5>
+		<n:PID.7 Type="TS" Item="110" LongName="Date/Time of Birth">
+			<n:TS.1 Type="DTM" LongName="Time">String</n:TS.1>
+		</n:PID.7>
+		<n:PID.8 Table="HL70001" Type="IS" Item="111" LongName="Administrative Sex">String</n:PID.8>
+		<n:PID.11 Type="XAD" Item="114" LongName="Patient Address">
+			<n:XAD.1 Type="SAD" LongName="Street Address">
+				<n:SAD.1 Type="ST" LongName="Street or Mailing Address">String</n:SAD.1>
+			</n:XAD.1>
+			<n:XAD.2 Type="ST" LongName="Village Name">String</n:XAD.2>
+			<n:XAD.3 Type="ST" LongName="Traditional Authority Name">String</n:XAD.3>
+			<n:XAD.4 Type="ST" LongName="District Name">String</n:XAD.4>
+		</n:PID.11>
+		<n:PID.13 Type="XTN" Item="116" LongName="Phone Number - Home">
+			<n:XTN.1 Type="ST" LongName="Telephone Number">String</n:XTN.1>
+			<n:XTN.3 Type="ID" LongName="Telecommunication
+Equipment Type">String</n:XTN.3>
+		</n:PID.13>
+		<n:PID.29 Type="TS" Item="740" LongName="Patient Death Date and Time">
+			<n:TS.1 Type="DTM" LongName="Time">String</n:TS.1>
+		</n:PID.29>
+		<n:PID.30 Table="HL70136" Type="ID" Item="741"
+			LongName="Patient Death Indicator">String</n:PID.30>
+	</n:PID>
+	<n:NK1>
+		<n:NK1.1 Type="SI" Item="190" LongName="Set ID - NK1">String</n:NK1.1>
+		<n:NK1.2 Type="XPN" Item="191" LongName="Name">
+			<n:XPN.1 Type="FN" LongName="Family Name">
+				<n:FN.1 Type="ST" LongName="Surname">String</n:FN.1>
+			</n:XPN.1>
+			<n:XPN.2 Type="ST" LongName="Given Name">String</n:XPN.2>
+			<n:XPN.3 Type="ST"
+				LongName="Second and Further Given Names or Initials Thereof">String</n:XPN.3>
+		</n:NK1.2>
+		<n:NK1.3 Table="HL70063" Type="CE" Item="192" LongName="Relationship">
+			<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+			<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+			<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+		</n:NK1.3>
+		<n:NK1.4 Type="XAD" Item="193" LongName="Address">
+			<n:XAD.1 Type="SAD" LongName="Street Address">
+				<n:SAD.1 Type="ST" LongName="Street or Mailing Address">String</n:SAD.1>
+			</n:XAD.1>
+			<n:XAD.2 Type="ST" LongName="Other Designation">String</n:XAD.2>
+			<n:XAD.3 Type="ST" LongName="City">String</n:XAD.3>
+			<n:XAD.4 Type="ST" LongName="State or Province">String</n:XAD.4>
+			<n:XAD.5 Type="ST" LongName="Zip or Postal Code">String</n:XAD.5>
+			<n:XAD.6 Table="HL70399" Type="ID" LongName="Country">String</n:XAD.6>
+			<n:XAD.9 Table="HL70289" Type="IS" LongName="County/Parish Code">String</n:XAD.9>
+		</n:NK1.4>
+		<n:NK1.5 Type="XTN" Item="194" LongName="Phone Number">
+			<n:XTN.4 Type="ST" LongName="Email Address">String</n:XTN.4>
+			<n:XTN.5 Type="NM" LongName="Country Code">String</n:XTN.5>
+			<n:XTN.6 Type="NM" LongName="Area/City Code">String</n:XTN.6>
+			<n:XTN.7 Type="NM" LongName="Local Number">String</n:XTN.7>
+			<n:XTN.8 Type="NM" LongName="Extension">String</n:XTN.8>
+			<n:XTN.9 Type="ST" LongName="Any Text">String</n:XTN.9>
+		</n:NK1.5>
+	</n:NK1>
+	<n:ZPT_ZP1.Encounter>
+		<n:PV1>
+			<n:PV1.1 Type="SI" Item="131" LongName="Set ID - PV1">String</n:PV1.1>
+			<n:PV1.3 Type="PL" Item="133" LongName="Assigned Patient Location">
+				<n:PL.4 Table="HL70362" Type="HD" LongName="Facility ID">
+					<n:HD.1 Table="HL70300" Type="IS" LongName="Namespace ID">String</n:HD.1>
+					<n:HD.2 Type="ST" LongName="Universal ID">String</n:HD.2>
+					<n:HD.3 Table="HL70301" Type="ID" LongName="Universal ID Type">String</n:HD.3>
+				</n:PL.4>
+			</n:PV1.3>
+			<n:PV1.44 Type="TS" Item="174" LongName="Admit Date/Time">
+				<n:TS.1 Type="DTM" LongName="Time">String</n:TS.1>
+			</n:PV1.44>
+		</n:PV1>
+		<n:ZPT_ZP1.Observation>
+			<n:OBR>
+				<n:OBR.1 Type="SI" Item="237" LongName="Set ID - OBR">String</n:OBR.1>
+				<n:OBR.4 Type="CE" Item="238" LongName="Universal Service Identifier">
+					<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+					<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+					<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+					<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+					<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+					<n:CE.6 Table="HL70396" Type="ID"
+						LongName="Name of Alternate Coding System">String</n:CE.6>
+				</n:OBR.4>
+				<n:OBR.8 Type="TS" Item="242" LongName="Observation End Date/Time">
+					<n:TS.1 Type="DTM" LongName="Time">String</n:TS.1>
+				</n:OBR.8>
+			</n:OBR>
+			<n:OBX>
+				<n:OBX.1 Type="SI" Item="569" LongName="Set ID - OBX">String</n:OBX.1>
+				<n:OBX.2 Table="HL70125" Type="ID" Item="570" LongName="Value Type">String</n:OBX.2>
+				<n:OBX.3 Type="CE" Item="571" LongName="Observation Identifier">
+					<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+					<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+					<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+					<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+					<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+					<n:CE.6 Table="HL70396" Type="ID"
+						LongName="Name of Alternate Coding System">String</n:CE.6>
+				</n:OBX.3>
+				<n:OBX.5 Type="varies" Item="573" LongName="Observation Value" />
+				<n:OBX.6 Type="CE" Item="574" LongName="Units">
+					<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+					<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+					<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+					<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+					<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+					<n:CE.6 Table="HL70396" Type="ID"
+						LongName="Name of Alternate Coding System">String</n:CE.6>
+				</n:OBX.6>
+				<n:OBX.11 Table="HL70085" Type="ID" Item="579"
+					LongName="Observation Result
+Status">String</n:OBX.11>
+				<n:OBX.14 Type="TS" Item="582" LongName="Date/Time of the Observation">
+					<n:TS.1 Type="DTM" LongName="Time">String</n:TS.1>
+				</n:OBX.14>
+			</n:OBX>
+		</n:ZPT_ZP1.Observation>
+		<n:ZPT_ZP1.DrugOrTreatment>
+			<n:ORC>
+				<n:ORC.1 Table="HL70119" Type="ID" Item="215" LongName="Order Control">String</n:ORC.1>
+			</n:ORC>
+			<n:TQ1>
+				<n:TQ1.3 Table="HL70335" Type="RPT" Item="1629" LongName="Repeat Pattern">
+					<n:RPT.1 Table="HL70335" Type="CWE" LongName="Repeat Pattern Code">
+						<n:CWE.1 Type="ST" LongName="Identifier">String</n:CWE.1>
+						<n:CWE.2 Type="ST" LongName="Text">String</n:CWE.2>
+						<n:CWE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CWE.3>
+						<n:CWE.4 Type="ST" LongName="Alternate Identifier">String</n:CWE.4>
+						<n:CWE.5 Type="ST" LongName="Alternate Text">String</n:CWE.5>
+						<n:CWE.6 Table="HL70396" Type="ID"
+							LongName="Name of Alternate Coding
+System">String</n:CWE.6>
+						<n:CWE.7 Type="ST" LongName="Coding System Version ID">String</n:CWE.7>
+						<n:CWE.8 Type="ST" LongName="Alternate Coding System Version ID">String</n:CWE.8>
+						<n:CWE.9 Type="ST" LongName="Original Text">String</n:CWE.9>
+					</n:RPT.1>
+				</n:TQ1.3>
+				<n:TQ1.7 Type="TS" Item="1633" LongName="Start date/time">
+					<n:TS.1 Type="DTM" LongName="Time">String</n:TS.1>
+				</n:TQ1.7>
+				<n:TQ1.11 Type="TX" Item="1637" LongName="Text instruction">
+					<escape V="String">
+						<escape V="String" />
+					</escape>
+				</n:TQ1.11>
+			</n:TQ1>
+			<n:RXO>
+				<n:RXO.1 Type="CE" Item="292" LongName="Requested Give Code">
+					<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+					<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+					<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+					<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+					<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+					<n:CE.6 Table="HL70396" Type="ID"
+						LongName="Name of Alternate Coding System">String</n:CE.6>
+				</n:RXO.1>
+				<n:RXO.2 Type="NM" Item="293" LongName="Requested Give Amount - Minimum">String</n:RXO.2>
+				<n:RXO.4 Type="CE" Item="295" LongName="Requested Give Units">
+					<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+					<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+					<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+					<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+					<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+					<n:CE.6 Table="HL70396" Type="ID"
+						LongName="Name of Alternate Coding System">String</n:CE.6>
+				</n:RXO.4>
+				<n:RXO.7 Type="CE" Item="298"
+					LongName="Provider&apos;s Administration Instructions">
+					<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+					<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+					<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+					<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+					<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+					<n:CE.6 Table="HL70396" Type="ID"
+						LongName="Name of Alternate Coding System">String</n:CE.6>
+				</n:RXO.7>
+				<n:RXO.11 Type="NM" Item="302" LongName="Requested Dispense Amount">String</n:RXO.11>
+				<n:RXO.12 Type="CE" Item="303" LongName="Requested Dispense Units">
+					<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+					<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+					<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+					<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+					<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+					<n:CE.6 Table="HL70396" Type="ID"
+						LongName="Name of Alternate Coding System">String</n:CE.6>
+				</n:RXO.12>
+				<n:RXO.20 Type="CE" Item="1123" LongName="Indication">
+					<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+					<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+					<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+					<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+					<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+					<n:CE.6 Table="HL70396" Type="ID"
+						LongName="Name of Alternate Coding System">String</n:CE.6>
+				</n:RXO.20>
+			</n:RXO>
+			<n:OBX>
+				<n:OBX.1 Type="SI" Item="569" LongName="Set ID - OBX">String</n:OBX.1>
+				<n:OBX.2 Table="HL70125" Type="ID" Item="570" LongName="Value Type">String</n:OBX.2>
+				<n:OBX.3 Type="CE" Item="571" LongName="Observation Identifier">
+					<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+					<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+					<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+					<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+					<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+					<n:CE.6 Table="HL70396" Type="ID"
+						LongName="Name of Alternate Coding System">String</n:CE.6>
+				</n:OBX.3>
+				<n:OBX.5 Type="varies" Item="573" LongName="Observation Value" />
+				<n:OBX.6 Type="CE" Item="574" LongName="Units">
+					<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+					<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+					<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+					<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+					<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+					<n:CE.6 Table="HL70396" Type="ID"
+						LongName="Name of Alternate Coding System">String</n:CE.6>
+				</n:OBX.6>
+				<n:OBX.11 Table="HL70085" Type="ID" Item="579"
+					LongName="Observation Result
+Status">String</n:OBX.11>
+				<n:OBX.14 Type="TS" Item="582" LongName="Date/Time of the Observation">
+					<n:TS.1 Type="DTM" LongName="Time">String</n:TS.1>
+				</n:OBX.14>
+			</n:OBX>
+		</n:ZPT_ZP1.DrugOrTreatment>
+		<n:RXD>
+			<n:RXD.1 Type="NM" Item="334" LongName="Dispense Sub-ID Counter">String</n:RXD.1>
+			<n:RXD.2 Table="HL70292" Type="CE" Item="335" LongName="Dispense/Give Code">
+				<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+				<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+				<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+				<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+				<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+				<n:CE.6 Table="HL70396" Type="ID"
+					LongName="Name of Alternate Coding System">String</n:CE.6>
+			</n:RXD.2>
+			<n:RXD.3 Type="TS" Item="336" LongName="Date/Time Dispensed">
+				<n:TS.1 Type="DTM" LongName="Time">String</n:TS.1>
+			</n:RXD.3>
+			<n:RXD.4 Type="NM" Item="337" LongName="Actual Dispense Amount">String</n:RXD.4>
+			<n:RXD.5 Type="CE" Item="338" LongName="Actual Dispense Units">
+				<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+				<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+				<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+				<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+				<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+				<n:CE.6 Table="HL70396" Type="ID"
+					LongName="Name of Alternate Coding System">String</n:CE.6>
+			</n:RXD.5>
+			<n:RXD.7 Type="ST" Item="325" LongName="Prescription Number">String</n:RXD.7>
+			<n:RXD.12 Type="CQ" Item="329" LongName="Total Daily Dose">
+				<n:CQ.1 Type="NM" LongName="Quantity">String</n:CQ.1>
+				<n:CQ.2 Type="CE" LongName="Units">
+					<n:CE.1 Type="ST" LongName="Identifier">String</n:CE.1>
+					<n:CE.2 Type="ST" LongName="Text">String</n:CE.2>
+					<n:CE.3 Table="HL70396" Type="ID" LongName="Name of Coding System">String</n:CE.3>
+					<n:CE.4 Type="ST" LongName="Alternate Identifier">String</n:CE.4>
+					<n:CE.5 Type="ST" LongName="Alternate Text">String</n:CE.5>
+					<n:CE.6 Table="HL70396" Type="ID"
+						LongName="Name of Alternate Coding System">String</n:CE.6>
+				</n:CQ.2>
+			</n:RXD.12>
+		</n:RXD>
+	</n:ZPT_ZP1.Encounter>
+</n:ZPT_ZP1>

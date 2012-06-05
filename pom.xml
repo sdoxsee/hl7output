@@ -8,11 +8,14 @@
 	<packaging>pom</packaging>
 	<name>HL7 Output Module</name>
 	<description>Module to take OpenMRS data model and map it to HAPI objects in order to generate HL7 messages and promote interoperability of health systems</description>
-	<url>https://wiki.openmrs.org/display/docs/HL7+Output+Module+Module</url>
+	<url>https://wiki.openmrs.org/display/docs/HL7+Output+Module</url>
 	
 	<developers>
 		<developer>
-			<name>sdoxsee</name>
+			<name>Suranga Kasthurirathne</name>
+		</developer>
+		<developer>
+			<name>Stephen Doxsee</name>
 		</developer>
 	</developers>
 	
@@ -33,7 +36,7 @@
 	</modules>
 	
 	<properties>
-		<openMRSVersion>1.8.3</openMRSVersion>
+		<openMRSVersion>1.8.4-SNAPSHOT</openMRSVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -51,8 +54,6 @@
 			</dependency>
 			-->
 			
-			
-
 			<!-- Begin OpenMRS core -->
 			
 			<dependency>
@@ -96,7 +97,7 @@
 			</dependency>
 						
 			<!-- End OpenMRS core -->
-
+			
 		</dependencies>
 	</dependencyManagement>
 
