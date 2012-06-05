@@ -1,4 +1,4 @@
-package org.openmrs.module;
+package org.openmrs.module.web.controller;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertNotNull;

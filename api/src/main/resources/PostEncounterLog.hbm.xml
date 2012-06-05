@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
 
-	<class name="org.openmrs.module.model.PostEncounterLog" table="RHEASHRadapter_post_encounter_log">
+	<class name="org.openmrs.module.model.PostEncounterLog" table="hl7output_post_encounter_log">
 
 		<id name="postRequestId" type="int" column="post_Request_Id" 
 			unsaved-value="null">

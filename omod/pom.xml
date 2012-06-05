@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>hl7output-omod</artifactId>
-	<packaging>jar</packaging>
+	<packaging>omod</packaging>
 	<name>HL7 Output Module OMOD</name>
 	<description>OMOD project for HL7Output</description>
 

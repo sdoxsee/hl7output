@@ -4,23 +4,59 @@
 <sqldiff version="1.0">
 	<help>
 		USE:
-			The diffs are ordered by data model version number.
+			The diffs are ordered by datamodel version number.
 			The script can be run in a top down fashion and is
-			expected to not fail or overwrite old data
+			expected to not failor overwrite old data
 		
 		EXPECT:
 			- "use business-database-name;" was called prior to
 			   calling this script
 	</help>
-
-<!-- 
-	<diff>
-		<version>1.0-SNAPSHOT</version>
-		<author>sdoxsee</author>
-		<date></date>
-		<description></description>
-		<sql></sql>
-	</diff>
- -->
 	
+	<diff>
+		<version>1.0.1</version>
+		<author>Suranga</author>
+		<date>May 26th, 2012</date>
+		<description>
+			Log tables to record POST and GET encounter requests made on the RHEA SHR Adapter module
+		</description>
+		<sql>
+			DROP TABLE IF EXISTS `hl7output_post_encounter_log`;
+CREATE TABLE  `hl7output_post_encounter_log` (
+  `post_request_id` int NOT NULL AUTO_INCREMENT,
+  `enterprise_id` varchar(20) default NULL,
+  `hl7_data` mediumtext default NULL,
+  `date_created` varchar(40) default NULL,
+  `valid` smallint(6) NOT NULL DEFAULT '0',
+  `error_message` mediumtext default NULL,
+  `user_id` int NOT NULL,
+  PRIMARY KEY  (`post_Request_Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+			DROP TABLE IF EXISTS `hl7output_get_encounter_log`;
+CREATE TABLE  `hl7output_get_encounter_log` (
+  `get_request_id` int NOT NULL AUTO_INCREMENT,
+  `enterprise_id` varchar(20) default NULL,
+  `encounter_unique_id` varchar(20) default NULL,
+  `date_start` varchar(40) default NULL,
+  `date_end` varchar(40) default NULL,
+  `log_time` varchar(40) default NULL,
+  `result` varchar(200) default NULL,
+  PRIMARY KEY  (`get_request_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+			DROP TABLE IF EXISTS `hl7output_matching_encounters`;
+	CREATE TABLE `hl7output_matching_encounters` (
+			`matching_encounters_id` int AUTO_INCREMENT PRIMARY KEY,
+			`get_request_id` int default NULL,
+			`encounter_id` int default NULL,
+			KEY `matching_id` (`get_request_id`),
+			CONSTRAINT `matching_id` FOREIGN KEY (`get_request_id`)
+			REFERENCES `hl7output_get_encounter_log` (`get_request_id`)
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+		</sql>
+	</diff>
+
+
+
 </sqldiff>

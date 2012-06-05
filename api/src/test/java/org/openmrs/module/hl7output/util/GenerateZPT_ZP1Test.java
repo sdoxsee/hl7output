@@ -22,7 +22,7 @@ public class GenerateZPT_ZP1Test extends BaseModuleContextSensitiveTest{
 	
 	@Before
 	public void runBeforeEachTest() throws Exception {
-		executeDataSet("src/test/resources/RHEAControllerTest-initialData.xml");
+		executeDataSet("src/test/resources/initialDatabaseState.xml");
 	}
 	
 	@Test

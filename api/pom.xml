@@ -75,24 +75,24 @@
 		<plugins>
 			<!-- ***uncomment the plugin section to generate custom model based on 
 				conformance profile from MWB*** -->
-			<plugin>
-				<groupId>ca.uhn.hapi</groupId>
-				<artifactId>hapi-sourcegen</artifactId>
-				<version>1.2</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>confgen</goal>
-						</goals>
-						<configuration>
-							<profile>${project.basedir}/src/main/resources/org/openmrs/module/hl7output/custommodel/v25/ZPT_ZP1-conformance-profile-withTables-forXml.xml</profile>
-							<targetDirectory>${project.basedir}/src/main/java/</targetDirectory>
-							<packageName>org.openmrs.module.hl7output.custommodel.v25</packageName>
-							<generateDateTypes>NONE</generateDateTypes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>ca.uhn.hapi</groupId> -->
+<!-- 				<artifactId>hapi-sourcegen</artifactId> -->
+<!-- 				<version>1.2</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<goals> -->
+<!-- 							<goal>confgen</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<profile>${project.basedir}/src/main/resources/org/openmrs/module/hl7output/custommodel/v25/ZPT_ZP1-conformance-profile-withTables-forXml.xml</profile> -->
+<!-- 							<targetDirectory>${project.basedir}/src/main/java/</targetDirectory> -->
+<!-- 							<packageName>org.openmrs.module.hl7output.custommodel.v25</packageName> -->
+<!-- 							<generateDateTypes>NONE</generateDateTypes> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 		</plugins>
 		<pluginManagement>
 			<plugins>

@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
 
-	<class name="org.openmrs.module.model.MatchingEncounters" table="RHEASHRadapter_matching_encounters">
+	<class name="org.openmrs.module.model.MatchingEncounters" table="hl7output_matching_encounters">
 
 		<id name="matchingEncountersId" type="int" column="matching_encounters_id" 
 			unsaved-value="0">
