@@ -14,7 +14,6 @@ import org.openmrs.ConceptNumeric;
 import org.openmrs.Encounter;
 import org.openmrs.Obs;
 import org.openmrs.Patient;
-import org.openmrs.PersonAddress;
 import org.openmrs.api.ConceptService;
 
 import ca.uhn.hl7v2.HL7Exception;
@@ -33,22 +32,24 @@ import ca.uhn.hl7v2.model.v25.segment.PID;
 import ca.uhn.hl7v2.model.v25.segment.PV1;
 import ca.uhn.hl7v2.parser.PipeParser;
 
-public class Mapper {
+public class Mapper extends MapperNK1 {
 
 	Log log = LogFactory.getLog(this.getClass());
 	
 	protected ConceptService conceptService;
-	protected MapperPID mapperPid;
-	private MapperMSH mapperMsh;
+	private MapperMSH mapperMSH;
+	private MapperPID mapperPID;
+	private MapperNK1 mapperNK1;
 	
 	public Mapper(ConceptService conceptService) {
 		this.conceptService = conceptService;
-		this.mapperMsh = new MapperMSH();
-		this.mapperPid = new MapperPID();
+		this.mapperMSH = new MapperMSH();
+		this.mapperPID = new MapperPID();
+		this.mapperNK1 = new MapperNK1();
 	}
 	
 	protected void mapToMSH(MSH msh) throws DataTypeException {
-		mapperMsh.mapToMSH(msh);
+		mapperMSH.mapToMSH(msh);
 	}
 
 	protected void mapToORCs(ORU_R01 r01, List<Encounter> encounterList)
@@ -62,7 +63,7 @@ public class Mapper {
 	}
 	
 	protected void mapToPID(PID pid, Patient patient) throws DataTypeException, HL7Exception {
-		this.mapperPid.mapToPID(pid, patient);
+		this.mapperPID.mapToPID(pid, patient);
 	}
 
 	protected void mapToPV1(PV1 pv1, List<Encounter> encounterList)
@@ -91,54 +92,8 @@ public class Mapper {
 								.format(encounterList.get(0).getDateCreated()));
 	}
 
-	protected void mapToNK1(NK1 nk1, Patient patient) throws DataTypeException,
-			HL7Exception {
-
-		String ln = "";
-		String fn = "";
-
-		if (patient.getAttribute(RHEAHL7Constants.ATTR_NEXT_OF_KIN) != null) {
-			String nkName = patient.getAttribute(
-					RHEAHL7Constants.ATTR_NEXT_OF_KIN).getValue();
-
-			if ((patient != null)
-					&& (patient
-							.getAttribute(RHEAHL7Constants.ATTR_TELEPHONE_NUMBER) != null)) {
-				String tel = patient.getAttribute(
-						RHEAHL7Constants.ATTR_TELEPHONE_NUMBER).getValue();
-				nk1.getPhoneNumber(0).getTelephoneNumber().setValue(tel);
-			}
-			if ((nkName != null) && !nkName.equals("")) {
-				int indexSpace = nkName.indexOf(" ");
-				if (!nkName.isEmpty()) {
-					if (indexSpace < 0) {
-						fn = nkName;
-					} else {
-						fn = nkName.substring(0, indexSpace - 1);
-						ln = nkName.substring(indexSpace + 1);
-					}
-				}
-			}
-
-			nk1.getNKName(0).getFamilyName().getSurname().setValue(ln);
-			nk1.getNKName(0).getGivenName().setValue(fn);
-
-			nk1.getRelationship().getIdentifier()
-					.setValue(RHEAHL7Constants.ATTR_NEXT_OF_KIN);
-		}
-
-		if (patient != null) {
-			PersonAddress pa = patient.getPersonAddress();
-			nk1.getAddress(0).getStreetAddress().getStreetOrMailingAddress()
-					.setValue(pa.getAddress1());
-			nk1.getAddress(0).getStreetAddress().getDwellingNumber()
-					.setValue(pa.getAddress2());
-			nk1.getAddress(0).getCity().setValue(pa.getCityVillage());
-			nk1.getAddress(0).getStateOrProvince()
-					.setValue(pa.getStateProvince());
-			nk1.getAddress(0).getZipOrPostalCode().setValue(pa.getPostalCode());
-			nk1.getAddress(0).getCountry().setValue(pa.getCountry());
-		}
+	protected void mapToNK1(NK1 nk1, Patient patient) throws DataTypeException {
+		this.mapperNK1.mapToNK1(nk1, patient);
 	}
 
 	void mapToORC(ORC orc, Encounter encounter) throws DataTypeException,

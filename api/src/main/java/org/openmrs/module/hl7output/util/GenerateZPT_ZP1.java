@@ -29,7 +29,9 @@ public class GenerateZPT_ZP1 implements Serializable {
 		ZPT_ZP1 message = new ZPT_ZP1();
 		
 		this.mapper.mapToMSH(message.getMSH());
+		this.mapper.mapToEVN(message.getEVN());
 		this.mapper.mapToPID(message.getPID(), patient);
+		this.mapper.mapToNK1(message.getNK1(), patient);
 		
 		return message;
 	}
