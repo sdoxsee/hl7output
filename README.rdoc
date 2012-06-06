@@ -25,4 +25,4 @@ Unfortunately I have not had time to actively work on this project recently. If 
 
 == Special Thanks
 
-This module was originally based on the solution by Suranga Kasthurirathne in his {RHEASHRadapter project}[ https://jembiprojects.jira.com/svn/SHRADAP/trunk/].
+This module was originally based on the solution by Suranga Kasthurirathne in his {RHEASHRadapter project}[https://jembiprojects.jira.com/svn/SHRADAP/trunk/].
