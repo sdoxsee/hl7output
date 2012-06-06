@@ -8,6 +8,7 @@ import org.openmrs.Patient;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.hl7output.custommodel.v25.message.ZPT_ZP1;
 
+import ca.uhn.hl7v2.HL7Exception;
 import ca.uhn.hl7v2.model.DataTypeException;
 
 public class GenerateZPT_ZP1 implements Serializable {
@@ -24,10 +25,11 @@ public class GenerateZPT_ZP1 implements Serializable {
 	}
 
 	public ZPT_ZP1 generateZPT_ZP1Message(Patient patient,
-			List<Encounter> encounters) throws DataTypeException {
+			List<Encounter> encounters) throws HL7Exception {
 		ZPT_ZP1 message = new ZPT_ZP1();
 		
 		this.mapper.mapToMSH(message.getMSH());
+		this.mapper.mapToPID(message.getPID(), patient);
 		
 		return message;
 	}

@@ -3,6 +3,7 @@ package org.openmrs.module.hl7output.util;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -14,10 +15,16 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.hl7output.custommodel.v25.message.ZPT_ZP1;
 import org.openmrs.module.hl7output.custommodel.v25.segment.MSH;
 import org.openmrs.module.hl7output.custommodel.v25.segment.ORC;
+import org.openmrs.module.hl7output.custommodel.v25.segment.PID;
 import org.openmrs.test.BaseModuleContextSensitiveTest;
 import org.openmrs.test.Verifies;
 
-@Ignore
+import ca.uhn.hl7v2.parser.CustomModelClassFactory;
+import ca.uhn.hl7v2.parser.GenericParser;
+import ca.uhn.hl7v2.parser.Parser;
+import ca.uhn.hl7v2.parser.XMLParser;
+
+//@Ignore
 public class GenerateZPT_ZP1Test extends BaseModuleContextSensitiveTest{
 	
 	@Before
@@ -32,35 +39,41 @@ public class GenerateZPT_ZP1Test extends BaseModuleContextSensitiveTest{
 		ZPT_ZP1 message = null;
 		Patient patient = Context.getPatientService().getPatient(2);
 		Encounter encounter = Context.getEncounterService().getEncounter(1);
+		message = generator.generateZPT_ZP1Message(patient, Arrays.asList(encounter));
 		
-		List<Encounter> encounters = new ArrayList<Encounter>();
-		
-		encounters.add(encounter);
-		message = generator.generateZPT_ZP1Message(patient, encounters);
+		Parser customParser = new GenericParser(new CustomModelClassFactory(
+				"org.openmrs.module.hl7output.custommodel"));
+		System.out.println(customParser.encode(message, "XML"));
 		
 		//Validate the MSH segment
 		MSH msh = message.getMSH();
 		
-		assertEquals(msh.getVersionID().getInternationalizationCode().getIdentifier().getValue(),
-		    BaobabHL7Constants.INTERNATIONALIZATION_CODE);
-		assertEquals(msh.getVersionID().getVersionID().getValue(), BaobabHL7Constants.VERSION);
-		assertEquals(msh.getSendingApplication().getNamespaceID().getValue(),BaobabHL7Constants.SENDING_APPLICATION);
-		assertEquals(msh.getSendingFacility().getNamespaceID().getValue(),BaobabHL7Constants.SENDING_FACILITY);
-		assertEquals(msh.getMessageType().getMessageCode().getValue(),BaobabHL7Constants.MESSAGE_TYPE);
+		assertEquals(BaobabHL7Constants.INTERNATIONALIZATION_CODE, msh.getVersionID().getInternationalizationCode().getIdentifier().getValue());
+		assertEquals(BaobabHL7Constants.VERSION, msh.getVersionID().getVersionID().getValue());
+		assertEquals(BaobabHL7Constants.SENDING_APPLICATION, msh.getSendingApplication().getNamespaceID().getValue());
+		assertEquals(BaobabHL7Constants.SENDING_FACILITY, msh.getSendingFacility().getNamespaceID().getValue());
+		assertEquals(BaobabHL7Constants.MESSAGE_TYPE, msh.getMessageType().getMessageCode().getValue());
 		
-		//Validate the ORC segment
+		//Validate the PID segment
+		PID pid = message.getPID();
 		
-		ORC orc = message.getENCOUNTER().getORDER().getORC();
+		assertEquals(patient.getFamilyName(), pid.getPatientName(0).getFamilyName().getSurname().getValue());
+		assertEquals(patient.getGivenName() ,pid.getPatientName(0).getGivenName().getValue());
+		assertEquals(patient.getGender(), pid.getAdministrativeSex().getValue());
 		
-		 orc.getPlacerOrderNumber(0).getNamespaceID().setValue(BaobabHL7Constants.PROVIDER_SENDING_APPLICATION);
-		 assertEquals(orc.getOrderingProvider(0).getFamilyName().getSurname().toString(), encounters.get(0).getProvider().getFamilyName());
-
-		 assertEquals(orc.getOrderingProvider(0).getGivenName().toString(), encounters.get(0).getProvider().getGivenName());
-		 assertEquals(orc.getOrderingProvider(0).getIDNumber().toString(), encounters.get(0).getProvider().getId().toString());
-		 
-		 assertEquals(orc.getEnteredBy(0).getFamilyName().getSurname().getValue().toString(), encounters.get(0).getCreator().getFamilyName());
-		 assertEquals(orc.getEnteredBy(0).getGivenName().getValue().toString(), encounters.get(0).getCreator().getGivenName());
-		 assertEquals(orc.getEnteredBy(0).getIDNumber().getValue().toString(), encounters.get(0).getCreator().getId().toString());
-		
+//		//Validate the ORC segment
+//		
+//		ORC orc = message.getENCOUNTER().getORDER().getORC();
+//		
+//		 orc.getPlacerOrderNumber(0).getNamespaceID().setValue(BaobabHL7Constants.PROVIDER_SENDING_APPLICATION);
+//		 assertEquals(orc.getOrderingProvider(0).getFamilyName().getSurname().toString(), encounters.get(0).getProvider().getFamilyName());
+//
+//		 assertEquals(orc.getOrderingProvider(0).getGivenName().toString(), encounters.get(0).getProvider().getGivenName());
+//		 assertEquals(orc.getOrderingProvider(0).getIDNumber().toString(), encounters.get(0).getProvider().getId().toString());
+//		 
+//		 assertEquals(orc.getEnteredBy(0).getFamilyName().getSurname().getValue().toString(), encounters.get(0).getCreator().getFamilyName());
+//		 assertEquals(orc.getEnteredBy(0).getGivenName().getValue().toString(), encounters.get(0).getCreator().getGivenName());
+//		 assertEquals(orc.getEnteredBy(0).getIDNumber().getValue().toString(), encounters.get(0).getCreator().getId().toString());
+//		
 	}
 }
