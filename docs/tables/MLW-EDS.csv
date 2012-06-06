@@ -1,0 +1,24 @@
+Ambulatory status,KM0011
+Date of HIV positive test,KM0022
+Date of patient death from anti-retroviral therapy,KM0018
+Date of patient run out of ART pill,KM0025
+Date of patient scheduled to re-visit (appointment date),KM0008
+Date of patient starting 1st line alternative anti-retroviral therapy,KM0006
+Date of patient starting 2nd line anti-retroviral therapy,KM0007
+Date of patient stopped from anti-retroviral therapy,KM0021
+Date of patient transferred out,KM0023
+Detail HIV staging condition,KM0020
+Eligible for ART reason with low CD4 cell counts,KM0024
+Facility Code for HIV confirmation,KM0028
+Facility code of location transferred from,KM0030
+Facility code of location transferred to,KM0029
+Follow-up agreement (Y/N),KM0002
+Initial CD4 cell counts,KM0016
+Initial CD4 cell counts specimen taken date,KM0017
+Initial CD4 test (Y/N),KM0015
+Last ARV number,KM0027
+Name of location transferred from,KM0026
+Numbers of ART pill count in bottles,KM0013
+Patient's occupation,KM0003
+Referral from PMTCT (Y/N),KM0005
+Work/School status,KM0012

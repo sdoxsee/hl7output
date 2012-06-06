@@ -1,0 +1,29 @@
+how to generate api for custom message
+==================
+http://hl7api.sourceforge.net/conformance.html
+
+more info on maven plugin for generation
+==================
+http://hl7api.sourceforge.net/hapi-sourcegen/confgen-mojo.html
+
+
+https://gforge.inria.fr/scm/viewvc.php/Data/HL7MessageProfiles/ADT/RAD-36/?root=gazelle&pathrev=27992
+
+Choice Java vs Ruby
+- HAPI (but Java)
+- 'ruby-hl7' gem (not complete...would need extending. unsure of value)
+- conformance profiles must be created on Windows (problem regardless)
+	- for validation and HAPI class generation
+- how will we handle maintenance?
+	- OpenMRS (best chance of maintenance if not Baobab)
+
+
+HAPI - bug for XML
+what do conformance profiles buy you over XSD?
+- tables
+- pdf
+- validation
+- official
+
+
+

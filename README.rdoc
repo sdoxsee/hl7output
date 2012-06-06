@@ -5,6 +5,7 @@
 == Description
 
 Module to take OpenMRS data model and map it to HAPI objects in order to generate HL7 messages and promote interoperability of health systems.
+Please visit the {wiki}[https://github.com/sdoxsee/hl7output/wiki] for more information.
 
 == Building from Source
 

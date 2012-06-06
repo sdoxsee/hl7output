@@ -1,0 +1,41 @@
+Index: pom.xml
+===================================================================
+--- pom.xml	(revision 27774)
++++ pom.xml	(working copy)
+@@ -320,8 +320,8 @@
+ 
+ 			<dependency>
+ 				<groupId>ca.uhn.hapi</groupId>
+-				<artifactId>hapi</artifactId>
+-				<version>0.5</version>
++				<artifactId>hapi-structures-v25</artifactId>
++				<version>1.2</version>
+ 				<exclusions>
+ 					<exclusion>
+ 						<groupId>commons-cli</groupId>
+Index: api/src/main/java/org/openmrs/module/ModuleUtil.java
+===================================================================
+--- api/src/main/java/org/openmrs/module/ModuleUtil.java	(revision 27774)
++++ api/src/main/java/org/openmrs/module/ModuleUtil.java	(working copy)
+@@ -319,7 +319,7 @@
+ 				if (lowerReturn < 0 || upperReturn > 0) {
+ 					String ms = Context.getMessageSourceService().getMessage("Module.requireVersion.outOfBounds",
+ 					    new String[] { lowerBound, upperBound, version }, Context.getLocale());
+-					throw new ModuleException(ms);
++					//					throw new ModuleException(ms);
+ 				}
+ 			} else {
+ 				if (compareVersion(version, value) < 0) {
+Index: api/pom.xml
+===================================================================
+--- api/pom.xml	(revision 27774)
++++ api/pom.xml	(working copy)
+@@ -87,7 +87,7 @@
+       </dependency>
+       <dependency>
+          <groupId>ca.uhn.hapi</groupId>
+-         <artifactId>hapi</artifactId>
++         <artifactId>hapi-structures-v25</artifactId>
+       </dependency>
+       <dependency>
+          <groupId>org.openmrs.simpleframework</groupId>

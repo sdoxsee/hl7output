@@ -1,0 +1,75 @@
+Index: pom.xml
+===================================================================
+--- pom.xml	(revision 27774)
++++ pom.xml	(working copy)
+@@ -404,8 +404,8 @@
+ 
+ 			<dependency>
+ 				<groupId>ca.uhn.hapi</groupId>
+-				<artifactId>hapi</artifactId>
+-				<version>0.5</version>
++				<artifactId>hapi-structures-v25</artifactId>
++				<version>1.2</version>
+ 				<exclusions>
+ 					<exclusion>
+ 						<groupId>commons-cli</groupId>
+Index: pom.xml
+===================================================================
+--- pom.xml	(revision 27774)
++++ pom.xml	(working copy)
+@@ -91,7 +91,7 @@
+       </dependency>
+       <dependency>
+          <groupId>ca.uhn.hapi</groupId>
+-         <artifactId>hapi</artifactId>
++         <artifactId>hapi-structures-v25</artifactId>
+       </dependency>
+       <dependency>
+          <groupId>org.openmrs.simpleframework</groupId>
+Index: src/test/java/org/openmrs/module/ModuleUtilTest.java
+===================================================================
+--- src/test/java/org/openmrs/module/ModuleUtilTest.java	(revision 27774)
++++ src/test/java/org/openmrs/module/ModuleUtilTest.java	(working copy)
+@@ -407,6 +407,18 @@
+ 	}
+ 	
+ 	/**
++	 * @see {@link ModuleUtil#checkRequiredVersion(String, String)}
++	 */
++	@Test
++	@Verifies(value = "should ignore '-SNAPSHOT' in version", method = "checkRequiredVersion(String, String)")
++	public void checkRequiredVersion_shouldIgnoreSnapshotInVersion()
++			throws Exception {
++		String openmrsVersion = "1.10.0-SNAPSHOT";
++		String requiredOpenmrsVersion = "1.10.0-SNAPSHOT";
++		ModuleUtil.checkRequiredVersion(openmrsVersion, requiredOpenmrsVersion);
++	}
++	
++	/**
+ 	 * @see {@link ModuleUtil#compareVersion(String,String)}
+ 	 * 
+ 	 */
+Index: src/main/java/org/openmrs/module/ModuleUtil.java
+===================================================================
+--- src/main/java/org/openmrs/module/ModuleUtil.java	(revision 27774)
++++ src/main/java/org/openmrs/module/ModuleUtil.java	(working copy)
+@@ -278,6 +278,8 @@
+ 	 */
+ 	public static void checkRequiredVersion(String version, String value) throws ModuleException {
+ 		if (value != null && !value.equals("")) {
++			version = ignoreSnapshotInVersionComparison(version);
++			value = ignoreSnapshotInVersionComparison(value);
+ 			// need to externalize this string
+ 			String separator = "-";
+ 			if (value.indexOf("*") > 0 || value.indexOf(separator) > 0) {
+@@ -331,6 +333,10 @@
+ 			}
+ 		}
+ 	}
++
++	private static String ignoreSnapshotInVersionComparison(String version) {
++		return StringUtils.replace(version, "-SNAPSHOT", StringUtils.EMPTY);
++	}
+ 	
+ 	/**
+ 	 * Compares <code>version</code> to <code>value</code> version and value are strings like
