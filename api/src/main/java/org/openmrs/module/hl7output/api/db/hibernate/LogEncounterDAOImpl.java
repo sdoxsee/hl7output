@@ -1,13 +1,17 @@
-package org.openmrs.hibernate;
+package org.openmrs.module.hl7output.api.db.hibernate;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
-import org.openmrs.module.model.GetEncounterLog;
-import org.openmrs.module.model.PostEncounterLog;
+import org.openmrs.module.hl7output.api.db.LogEncounterDAO;
+import org.openmrs.module.hl7output.model.GetEncounterLog;
+import org.openmrs.module.hl7output.model.PostEncounterLog;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class LogEncounterDAOImpl implements LogEncounterDAO{
-
+public class LogEncounterDAOImpl implements LogEncounterDAO {
+	protected final Log log = LogFactory.getLog(this.getClass());
+	
 	private SessionFactory sessionFactory;
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {

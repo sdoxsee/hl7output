@@ -1,26 +1,20 @@
-package org.openmrs.module.web.controller;
+package org.openmrs.module.hl7output.web.controller;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-
-import java.util.Collections;
-import java.util.List;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.openmrs.Concept;
-import org.openmrs.Encounter;
 import org.openmrs.Location;
-import org.openmrs.Obs;
-import org.openmrs.Person;
 import org.openmrs.PersonAttributeType;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.hl7output.util.RHEAHL7Constants;
-import org.openmrs.module.web.controller.RHEApatientController;
-import org.openmrs.test.BaseContextSensitiveTest;
+import org.openmrs.test.BaseModuleContextSensitiveTest;
 import org.openmrs.test.Verifies;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -33,7 +27,7 @@ import ca.uhn.hl7v2.model.v25.segment.PID;
 //
 //org.hibernate.MappingException: Unknown entity: org.openmrs.module.model.GetEncounterLog
 //at org.hibernate.impl.SessionFactoryImpl.getEntityPersister(SessionFactoryImpl.java:550)
-public class RHEApatientControllerTest extends BaseContextSensitiveTest {
+public class RHEApatientControllerTest extends BaseModuleContextSensitiveTest {
 	
 	@Before
 	public void runBeforeEachTest() throws Exception {

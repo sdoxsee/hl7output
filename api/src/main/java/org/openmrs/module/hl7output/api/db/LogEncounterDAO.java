@@ -1,7 +1,7 @@
-package org.openmrs.hibernate;
+package org.openmrs.module.hl7output.api.db;
 
-import org.openmrs.module.model.GetEncounterLog;
-import org.openmrs.module.model.PostEncounterLog;
+import org.openmrs.module.hl7output.model.GetEncounterLog;
+import org.openmrs.module.hl7output.model.PostEncounterLog;
 
 
 public interface LogEncounterDAO {

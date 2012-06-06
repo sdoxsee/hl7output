@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
 
-	<class name="org.openmrs.module.model.GetEncounterLog" table="RHEASHRadapter_get_encounter_log">
+	<class name="org.openmrs.module.hl7output.model.GetEncounterLog" table="RHEASHRadapter_get_encounter_log">
 
 		<id name="getRequestId" type="int" column="get_request_id" 
 			unsaved-value="0">
@@ -33,7 +33,7 @@
 		<!-- bi-directional one-to-many association -->
 		<set name="matchingEncounters" lazy="true" inverse="true" cascade="all-delete-orphan" sort="natural">
 			<key column="get_request_id" not-null="true" />
-			<one-to-many class="org.openmrs.module.model.MatchingEncounters" />
+			<one-to-many class="org.openmrs.module.hl7output.model.MatchingEncounters" />
 		</set>
 		
 	</class>

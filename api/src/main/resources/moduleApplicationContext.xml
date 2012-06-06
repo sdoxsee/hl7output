@@ -16,32 +16,6 @@
 	<bean parent="serviceContext">
 		<property name="moduleService">
 			<list>
-<!-- 				<value>org.openmrs.api.LogEncounterService</value> -->
-<!-- 				<bean -->
-<!-- 					class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"> -->
-<!-- 					<property name="transactionManager"> -->
-<!-- 						<ref bean="transactionManager" /> -->
-<!-- 					</property> -->
-<!-- 					<property name="target"> -->
-<!-- 						<bean class="org.openmrs.api.LogEncounterServiceImpl"> -->
-<!-- 							<property name="logEncounterDAO"> -->
-<!-- 								<bean class="org.openmrs.hibernate.LogEncounterDAOImpl" -->
-<!-- 									autowire="byType"> -->
-<!-- 									<property name="sessionFactory"> -->
-<!-- 										<ref bean="sessionFactory" /> -->
-<!-- 									</property> -->
-<!-- 								</bean> -->
-<!-- 							</property> -->
-<!-- 						</bean> -->
-<!-- 					</property> -->
-<!-- 					<property name="preInterceptors"> -->
-<!-- 						<ref bean="serviceInterceptors" /> -->
-<!-- 					</property> -->
-<!-- 					<property name="transactionAttributeSource"> -->
-<!-- 						<bean -->
-<!-- 							class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource" /> -->
-<!-- 					</property> -->
-<!-- 				</bean> -->
 				<value>${project.parent.groupId}.${project.parent.artifactId}.api.HL7OutputService</value>
 				<bean
 					class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
@@ -74,16 +48,16 @@
 	<bean parent="serviceContext">
 		<property name="moduleService">
 			<list>
-				<value>org.openmrs.api.LogEncounterService</value>
+				<value>org.openmrs.module.hl7output.api.LogEncounterService</value>
 				<bean
 					class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
 					<property name="transactionManager">
 						<ref bean="transactionManager" />
 					</property>
 					<property name="target">
-						<bean class="org.openmrs.api.LogEncounterServiceImpl">
+						<bean class="org.openmrs.module.hl7output.api.impl.LogEncounterServiceImpl">
 							<property name="logEncounterDAO">
-								<bean class="org.openmrs.hibernate.LogEncounterDAOImpl"
+								<bean class="org.openmrs.module.hl7output.api.db.hibernate.LogEncounterDAOImpl"
 									autowire="byType">
 									<property name="sessionFactory">
 										<ref bean="sessionFactory" />

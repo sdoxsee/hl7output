@@ -1,11 +1,12 @@
-package org.openmrs.api;
+package org.openmrs.module.hl7output.api.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
-import org.openmrs.hibernate.LogEncounterDAO;
-import org.openmrs.module.model.GetEncounterLog;
-import org.openmrs.module.model.PostEncounterLog;
+import org.openmrs.module.hl7output.api.LogEncounterService;
+import org.openmrs.module.hl7output.api.db.LogEncounterDAO;
+import org.openmrs.module.hl7output.model.GetEncounterLog;
+import org.openmrs.module.hl7output.model.PostEncounterLog;
 
 
 public class LogEncounterServiceImpl implements LogEncounterService{

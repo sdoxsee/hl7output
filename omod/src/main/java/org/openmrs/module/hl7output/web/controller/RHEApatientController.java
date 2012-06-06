@@ -11,7 +11,7 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.web.controller;
+package org.openmrs.module.hl7output.web.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -34,17 +34,17 @@ import org.apache.commons.logging.LogFactory;
 import org.openmrs.Encounter;
 import org.openmrs.Patient;
 import org.openmrs.PatientIdentifierType;
-import org.openmrs.api.LogEncounterService;
 import org.openmrs.api.context.Context;
 import org.openmrs.hl7.HL7InArchive;
 import org.openmrs.hl7.HL7InError;
 import org.openmrs.hl7.HL7InQueue;
 import org.openmrs.hl7.HL7Source;
+import org.openmrs.module.hl7output.api.LogEncounterService;
+import org.openmrs.module.hl7output.extension.html.HL7Receiver;
+import org.openmrs.module.hl7output.model.GetEncounterLog;
+import org.openmrs.module.hl7output.model.MatchingEncounters;
+import org.openmrs.module.hl7output.model.PostEncounterLog;
 import org.openmrs.module.hl7output.util.GenerateORU_R01;
-import org.openmrs.module.extension.html.HL7Receiver;
-import org.openmrs.module.model.GetEncounterLog;
-import org.openmrs.module.model.MatchingEncounters;
-import org.openmrs.module.model.PostEncounterLog;
 import org.openmrs.module.webservices.rest.SimpleObject;
 import org.openmrs.module.webservices.rest.web.v1_0.controller.BaseCrudController;
 import org.openmrs.module.webservices.rest.web.v1_0.resource.PatientResource;

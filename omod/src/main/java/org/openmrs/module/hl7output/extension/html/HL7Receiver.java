@@ -12,7 +12,7 @@
  *
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
-package org.openmrs.module.extension.html;
+package org.openmrs.module.hl7output.extension.html;
  
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

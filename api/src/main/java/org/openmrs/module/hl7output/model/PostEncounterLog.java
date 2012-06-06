@@ -1,4 +1,4 @@
-package org.openmrs.module.model;
+package org.openmrs.module.hl7output.model;
 
 import java.util.Date;
 
