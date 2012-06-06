@@ -20,7 +20,7 @@ public class GenerateZPT_ZP1 implements Serializable {
 		this(new CustomMapper(Context.getConceptService()));
 	}
 
-	public GenerateZPT_ZP1(CustomMapper mapper) {
+	GenerateZPT_ZP1(CustomMapper mapper) {
 		this.mapper = mapper;
 	}
 
