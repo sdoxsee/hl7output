@@ -1,3 +1,5 @@
+{<img src="https://secure.travis-ci.org/sdoxsee/hl7output.png" />}[http://travis-ci.org/sdoxsee/hl7output]
+
 == Description ==
 
 This should be the description of your module.  Write your description in a way that will help 
