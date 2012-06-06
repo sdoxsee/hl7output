@@ -16,10 +16,8 @@
 	<require_version>${openMRSVersion}</require_version>
 	<!-- / Module Properties -->
 
-	
 	<!-- Module Activator -->
 	<activator>${project.parent.groupId}.${project.parent.artifactId}.HL7OutputActivator</activator>
-	
 	
 	<!-- Adds link to admin page -->
 	<extension>
@@ -47,4 +45,3 @@
 	</mappingFiles>
 	
 </module>
-

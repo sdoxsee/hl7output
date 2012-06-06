@@ -13,21 +13,27 @@
  */
 package org.openmrs.module.hl7output.extension.html;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Map;
 
 import junit.framework.TestCase;
 
+import org.junit.Assert;
+import org.junit.Test;
 import org.openmrs.module.Extension.MEDIA_TYPE;
 import org.openmrs.module.hl7output.extension.html.AdminList;
 
 /**
  * This test validates the AdminList extension class
  */
-public class AdminListExtensionTest extends TestCase {
+public class AdminListExtensionTest {
 
 	/**
 	 * Get the links for the extension class
 	 */
+	@Test
 	public void testValidatesLinks() {
 		AdminList ext = new AdminList();
 		
@@ -41,6 +47,7 @@ public class AdminListExtensionTest extends TestCase {
 	/**
 	 * Check the media type of this extension class
 	 */
+	@Test
 	public void testMediaTypeIsHtml() {
 		AdminList ext = new AdminList();
 		
