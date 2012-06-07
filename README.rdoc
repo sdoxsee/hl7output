@@ -13,8 +13,7 @@ data model to specific standard or custom HAPI objects. Please visit the
 {wiki}[https://github.com/sdoxsee/hl7output/wiki] for more information.
 
 == Requirements
-* Currently requires OpenMRS >= 1.8.4-SNAPSHOT for HAPI 1.2 dependency 
-* 
+* Currently requires OpenMRS >= 1.8.4-SNAPSHOT for HAPI 1.2 dependency
 
 == Building from Source
 
