@@ -19,6 +19,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.Patient;
@@ -28,6 +29,7 @@ import org.openmrs.module.hl7output.custommodel.v25.message.ZPT_ZP1;
 import org.openmrs.module.hl7output.util.GenerateZPT_ZP1;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,9 +48,11 @@ public class HL7OutputController {
 
 	private Log log = LogFactory.getLog(this.getClass());
 
-	@RequestMapping(value = "/rest/hl7output/sample", method = RequestMethod.GET)
+	@RequestMapping(value = "/rest/hl7output/sample/{encoding}", method = RequestMethod.GET)
 	@ResponseBody
-	public Object getHL7Message(HttpServletRequest request, HttpServletResponse response)
+	public Object getHL7Message(
+			@PathVariable("encoding") String encoding,
+			HttpServletRequest request, HttpServletResponse response)
 			throws ResponseException, APIException, HL7Exception {
 		GenerateZPT_ZP1 generator = new GenerateZPT_ZP1();
 		Patient patient = Context.getPatientService().getAllPatients().get(0);
@@ -56,7 +60,7 @@ public class HL7OutputController {
 		
 		Parser customParser = new GenericParser(new CustomModelClassFactory(
 				"org.openmrs.module.hl7output.custommodel"));
-		String encodedMessage = customParser.encode(message, "XML");
+		String encodedMessage = customParser.encode(message, encoding);
 		
 		try {
 			validate(message);

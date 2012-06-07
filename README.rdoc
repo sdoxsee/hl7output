@@ -1,22 +1,40 @@
-= HL7 Output Module <tt>(for OpenMRS >= 1.8.4-SNAPSHOT)</tt>
+= HL7 Output Module
 
 {<img src="https://secure.travis-ci.org/sdoxsee/hl7output.png?branch=master" alt="Build Status" />}[http://travis-ci.org/sdoxsee/hl7output]
 
 == Description
 
-Module to take OpenMRS data model and map it to HAPI objects in order to generate HL7 messages and promote interoperability of health systems.
-Please visit the {wiki}[https://github.com/sdoxsee/hl7output/wiki] for more information.
+The {HL7}[http://en.wikipedia.org/wiki/Health_Level_7] Output Module is intended to allow data from 
+{OpenMRS}[http://en.wikipedia.org/wiki/OpenMRS] to be exported from OpenMRS as
+{HL7v2.5}[http://en.wikipedia.org/wiki/Health_Level_7#HL7_version_2.x] messages. HL7 messages are a 
+common way to facilitate the interoperability of healthcare systems. This module uses the popular
+HL7 API ({HAPI}[http://hl7api.sourceforge.net/]) to generate HL7 messages by mapping the OpenMRS 
+data model to specific standard or custom HAPI objects. Please visit the 
+{wiki}[https://github.com/sdoxsee/hl7output/wiki] for more information.
+
+== Requirements
+* Currently requires OpenMRS >= 1.8.4-SNAPSHOT for HAPI 1.2 dependency 
+* 
 
 == Building from Source
 
-You will need to have Java 1.6+ and Maven 2.x+ installed.  Use the command 'mvn package' to compile and package the module.  The .omod file will be in the omod/target folder.
+You will need to have Java 1.6+ and Maven 2.x+ installed.  Use the command 
+   mvn package
+to compile and package the module.  The .omod file will be in the omod/target folder.
 
 == Installation
+
+Note: the hl7output module depends on the 
+{webservices.rest module}[https://wiki.openmrs.org/display/docs/Webservices.rest+Module] 
+and requires that it be running before installing/starting hl7output
 
 1. Build the module to produce the .omod file.
 2. Use the OpenMRS Administration > Manage Modules screen to upload and install the .omod file.
 
 == Usage
+
+To get back a sample ZPT_ZP1 message with XML encoding, hit the following REST endpoint
+   http://localhost:8080/openmrs/ws/rest/hl7output/sample/XML
 
 TODO
 

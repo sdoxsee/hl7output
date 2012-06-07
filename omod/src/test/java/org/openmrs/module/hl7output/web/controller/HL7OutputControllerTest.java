@@ -19,7 +19,7 @@ public class HL7OutputControllerTest extends BaseModuleContextSensitiveTest {
 	
 	@Test
 	public void test() throws APIException, ResponseException, HL7Exception {
-		String hl7Message = (String)new HL7OutputController().getHL7Message(null, null);
+		String hl7Message = (String)new HL7OutputController().getHL7Message("XML",null, null);
 		System.out.println(hl7Message);
 	}
 

@@ -32,7 +32,7 @@ import ca.uhn.hl7v2.model.v25.segment.PID;
 import ca.uhn.hl7v2.model.v25.segment.PV1;
 import ca.uhn.hl7v2.parser.PipeParser;
 
-public class Mapper extends MapperNK1 {
+public class Mapper {
 
 	Log log = LogFactory.getLog(this.getClass());
 	
@@ -48,11 +48,11 @@ public class Mapper extends MapperNK1 {
 		this.mapperNK1 = new MapperNK1();
 	}
 	
-	protected void mapToMSH(MSH msh) throws DataTypeException {
+	public void mapToMSH(MSH msh) throws DataTypeException {
 		mapperMSH.mapToMSH(msh);
 	}
 
-	protected void mapToORCs(ORU_R01 r01, List<Encounter> encounterList)
+	public void mapToORCs(ORU_R01 r01, List<Encounter> encounterList)
 			throws Exception {
 		int orderORCCount = 0;
 		for (Encounter encounter : encounterList) {
@@ -62,11 +62,11 @@ public class Mapper extends MapperNK1 {
 		}
 	}
 	
-	protected void mapToPID(PID pid, Patient patient) throws DataTypeException, HL7Exception {
+	public void mapToPID(PID pid, Patient patient) throws DataTypeException, HL7Exception {
 		this.mapperPID.mapToPID(pid, patient);
 	}
 
-	protected void mapToPV1(PV1 pv1, List<Encounter> encounterList)
+	public void mapToPV1(PV1 pv1, List<Encounter> encounterList)
 			throws DataTypeException, HL7Exception {
 		pv1.getSetIDPV1().setValue(RHEAHL7Constants.IDPV1);
 		pv1.getPatientClass().setValue(RHEAHL7Constants.PATIENT_CLASS);
@@ -92,11 +92,11 @@ public class Mapper extends MapperNK1 {
 								.format(encounterList.get(0).getDateCreated()));
 	}
 
-	protected void mapToNK1(NK1 nk1, Patient patient) throws DataTypeException {
+	public void mapToNK1(NK1 nk1, Patient patient) throws DataTypeException {
 		this.mapperNK1.mapToNK1(nk1, patient);
 	}
 
-	void mapToORC(ORC orc, Encounter encounter) throws DataTypeException,
+	public void mapToORC(ORC orc, Encounter encounter) throws DataTypeException,
 			HL7Exception {
 		orc.getPlacerOrderNumber().getNamespaceID()
 				.setValue(RHEAHL7Constants.PROVIDER_SENDING_APPLICATION);
@@ -136,7 +136,7 @@ public class Mapper extends MapperNK1 {
 		orc.getDateTimeOfTransaction().getTime().setValue(dateStr);
 	}
 
-	protected void mapToOBRs(ORU_R01 r01, List<Encounter> encounterList)
+	public void mapToOBRs(ORU_R01 r01, List<Encounter> encounterList)
 			throws Exception {
 		int orderObsCount = 0;
 		for (Encounter e : encounterList) {
@@ -188,7 +188,7 @@ public class Mapper extends MapperNK1 {
 		}
 	}
 
-	protected void mapToOBXs(ORU_R01 message, List<Encounter> encounterList)
+	public void mapToOBXs(ORU_R01 message, List<Encounter> encounterList)
 			throws HL7Exception, DataTypeException {
 		int orderIndex = 0;
 		for (Encounter e : encounterList) {
@@ -237,7 +237,7 @@ public class Mapper extends MapperNK1 {
 		return mapping;
 	}
 
-	void mapToOBX(OBX obx, Obs obs) throws HL7Exception, DataTypeException {
+	public void mapToOBX(OBX obx, Obs obs) throws HL7Exception, DataTypeException {
 
 		Collection<ConceptMap> conceptMappings = obs.getConcept()
 				.getConceptMappings();
