@@ -13,12 +13,12 @@ data model to specific standard or custom HAPI objects. Please visit the
 {wiki}[https://github.com/sdoxsee/hl7output/wiki] for more information.
 
 == Requirements
-Currently requires OpenMRS >= 1.8.4-SNAPSHOT for HAPI 1.2 dependency
+OpenMRS >= 1.8.4-SNAPSHOT for pom.xml change that updated HAPI version to 1.2
 
 == Building from Source
 
 You will need to have Java 1.6+ and Maven 2.x+ installed.  Use the command 
-   mvn package
+   mvn clean package -DskipTests
 to compile and package the module.  The .omod file will be in the omod/target folder.
 
 == Installation
@@ -34,8 +34,6 @@ and requires that it be running before installing/starting hl7output
 
 To get back a sample ZPT_ZP1 message with XML encoding, hit the following REST endpoint
    http://localhost:8080/openmrs/ws/rest/hl7output/sample/XML
-
-TODO
 
 == Project Status
 
