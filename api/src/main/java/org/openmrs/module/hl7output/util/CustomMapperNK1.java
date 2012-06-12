@@ -2,9 +2,9 @@ package org.openmrs.module.hl7output.util;
 
 import org.openmrs.Patient;
 import org.openmrs.PersonAddress;
-import org.openmrs.module.hl7output.custommodel.v25.segment.NK1;
 
 import ca.uhn.hl7v2.model.DataTypeException;
+import ca.uhn.hl7v2.model.v25.segment.NK1;
 
 public class CustomMapperNK1 {
 
@@ -36,8 +36,8 @@ public class CustomMapperNK1 {
 						}
 					}
 			
-					nk1.getNK1Name(0).getFamilyName().getSurname().setValue(ln);
-					nk1.getNK1Name(0).getGivenName().setValue(fn);
+					nk1.getNk12_NKName(0).getFamilyName().getSurname().setValue(ln);
+					nk1.getNk12_NKName(0).getGivenName().setValue(fn);
 			
 					nk1.getRelationship().getIdentifier()
 							.setValue(BaobabHL7Constants.ATTR_NEXT_OF_KIN);

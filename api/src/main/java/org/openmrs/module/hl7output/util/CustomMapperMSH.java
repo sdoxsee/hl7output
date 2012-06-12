@@ -4,9 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-import org.openmrs.module.hl7output.custommodel.v25.segment.MSH;
-
 import ca.uhn.hl7v2.model.DataTypeException;
+import ca.uhn.hl7v2.model.v25.segment.MSH;
 
 public class CustomMapperMSH {
 
@@ -38,8 +37,8 @@ public class CustomMapperMSH {
 				.setValue(BaobabHL7Constants.PROCESSING_MODE);//
 		msh.getMessageControlID().setValue(UUID.randomUUID().toString());//
 	
-		msh.getAcceptAcknowledgmentType(0).setValue(BaobabHL7Constants.ACK_TYPE);
-		msh.getApplicationAcknowledgmentType(0).setValue(
+		msh.getAcceptAcknowledgmentType().setValue(BaobabHL7Constants.ACK_TYPE);
+		msh.getApplicationAcknowledgmentType().setValue(
 				BaobabHL7Constants.APPLICATION_ACK_TYPE);
 	}
 

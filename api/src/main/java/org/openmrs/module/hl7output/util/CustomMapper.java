@@ -4,13 +4,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.Patient;
 import org.openmrs.api.ConceptService;
-import org.openmrs.module.hl7output.custommodel.v25.segment.EVN;
-import org.openmrs.module.hl7output.custommodel.v25.segment.MSH;
-import org.openmrs.module.hl7output.custommodel.v25.segment.NK1;
-import org.openmrs.module.hl7output.custommodel.v25.segment.PID;
 
 import ca.uhn.hl7v2.HL7Exception;
 import ca.uhn.hl7v2.model.DataTypeException;
+import ca.uhn.hl7v2.model.v25.segment.EVN;
+import ca.uhn.hl7v2.model.v25.segment.MSH;
+import ca.uhn.hl7v2.model.v25.segment.NK1;
+import ca.uhn.hl7v2.model.v25.segment.PID;
 
 public class CustomMapper {
 

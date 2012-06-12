@@ -7,14 +7,18 @@
 
 package org.openmrs.module.hl7output.custommodel.v25.message;
 
-import org.openmrs.module.hl7output.custommodel.v25.group.*;
-import org.openmrs.module.hl7output.custommodel.v25.segment.*;
+import org.openmrs.module.hl7output.custommodel.v25.group.ZPT_ZP1_ENCOUNTER;
 
-import ca.uhn.log.HapiLogFactory;
 import ca.uhn.hl7v2.HL7Exception;
-import ca.uhn.hl7v2.parser.ModelClassFactory;
-import ca.uhn.hl7v2.parser.DefaultModelClassFactory;
 import ca.uhn.hl7v2.model.AbstractMessage;
+import ca.uhn.hl7v2.model.v25.segment.EVN;
+import ca.uhn.hl7v2.model.v25.segment.MSH;
+import ca.uhn.hl7v2.model.v25.segment.NK1;
+import ca.uhn.hl7v2.model.v25.segment.PID;
+import ca.uhn.hl7v2.model.v25.segment.SFT;
+import ca.uhn.hl7v2.parser.DefaultModelClassFactory;
+import ca.uhn.hl7v2.parser.ModelClassFactory;
+import ca.uhn.log.HapiLogFactory;
 
 /**
  * <p>Represents a ZPT_ZP1 message structure (see chapter ). This structure contains the 

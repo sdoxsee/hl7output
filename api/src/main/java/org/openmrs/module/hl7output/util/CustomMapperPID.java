@@ -7,10 +7,10 @@ import java.util.Map;
 import org.openmrs.Cohort;
 import org.openmrs.Patient;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.hl7output.custommodel.v25.segment.PID;
 
 import ca.uhn.hl7v2.HL7Exception;
 import ca.uhn.hl7v2.model.DataTypeException;
+import ca.uhn.hl7v2.model.v25.segment.PID;
 
 
 public class CustomMapperPID {

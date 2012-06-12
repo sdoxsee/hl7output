@@ -7,16 +7,18 @@
 
 package org.openmrs.module.hl7output.custommodel.v25.group;
 
-import org.openmrs.module.hl7output.custommodel.v25.segment.*;
+//import org.openmrs.module.hl7output.custommodel.v25.segment.*;
 
-import ca.uhn.log.HapiLogFactory;
 import ca.uhn.hl7v2.HL7Exception;
-import ca.uhn.hl7v2.parser.ModelClassFactory;
-import ca.uhn.hl7v2.parser.DefaultModelClassFactory;
-import ca.uhn.hl7v2.model.AbstractMessage;
-import ca.uhn.hl7v2.model.Group;
 import ca.uhn.hl7v2.model.AbstractGroup;
-import ca.uhn.hl7v2.model.GenericSegment;
+import ca.uhn.hl7v2.model.Group;
+import ca.uhn.hl7v2.model.Structure;
+import ca.uhn.hl7v2.model.v25.segment.OBX;
+import ca.uhn.hl7v2.model.v25.segment.ORC;
+import ca.uhn.hl7v2.model.v25.segment.RXO;
+import ca.uhn.hl7v2.model.v25.segment.TQ1;
+import ca.uhn.hl7v2.parser.ModelClassFactory;
+import ca.uhn.log.HapiLogFactory;
 
 /**
  * <p>Represents a ZPT_ZP1_ORDER group structure (ORDER).
