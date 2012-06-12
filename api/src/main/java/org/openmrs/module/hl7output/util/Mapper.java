@@ -1,6 +1,8 @@
 package org.openmrs.module.hl7output.util;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -83,33 +85,60 @@ public class Mapper extends MapperOBR {
 
 	public void mapToORCs(ORU_R01 r01, List<Encounter> encounterList) 
 			throws Exception {
-		int orderORCCount = 0;
-		for (Encounter encounter : encounterList) {
+		mapToORCs(getORCsAsList(r01), encounterList);
+	}
+
+	private List<ORC> getORCsAsList(ORU_R01 r01) {
+		List<ORC> orcs = new ArrayList<ORC>();
+		int reps = r01.getPATIENT_RESULT().getORDER_OBSERVATIONReps();
+		for (int orderORCCount=0; orderORCCount < reps; ++orderORCCount) {
 			ORC orc = r01.getPATIENT_RESULT().getORDER_OBSERVATION(orderORCCount).getORC();
-			
-			mapToORC(orc, encounter);
-			
-			orderORCCount++;
+			orcs.add(orc);
+		}
+		return orcs;
+	}
+	
+	private void mapToORCs(List<ORC> orcs, List<Encounter> encounterList) 
+			throws DataTypeException, HL7Exception {
+		Iterator<ORC> orcIterator = orcs.iterator();
+		for (Encounter encounter : encounterList) {
+			if (orcIterator.hasNext()) {
+				this.mapperORC.mapToORC(orcIterator.next(), encounter);
+			}
 		}
 	}
 	
 	public void mapToOBRs(ORU_R01 r01, List<Encounter> encounterList)
 			throws Exception {
-		int orderObsCount = 0;
+		mapToOBRs(getOBRsAsList(r01), encounterList);
+	}
+
+	private void mapToOBRs(List<OBR> obrs, List<Encounter> encounterList)
+			throws DataTypeException {
+		Iterator<OBR> obrIterator = obrs.iterator();
 		for (Encounter e : encounterList) {
-			OBR obr = r01.getPATIENT_RESULT()
-					.getORDER_OBSERVATION(orderObsCount).getOBR();
-			int reps = r01.getPATIENT_RESULT().getORDER_OBSERVATIONReps();
-
-			mapToOBR(obr, e, reps);
-
-			orderObsCount++;
+			if (obrIterator.hasNext()) {
+				mapToOBR(obrIterator.next(), e, obrs.size());
+			}
 		}
+	}
+
+	private List<OBR> getOBRsAsList(ORU_R01 r01) {
+		int reps = r01.getPATIENT_RESULT().getORDER_OBSERVATIONReps();
+		List<OBR> obrs = new ArrayList<OBR>();
+		for(int orderObsCount = 0; orderObsCount < reps; ++orderObsCount) {
+			OBR obr = r01.getPATIENT_RESULT().getORDER_OBSERVATION(orderObsCount).getOBR();
+			obrs.add(obr);
+		}
+		return obrs;
 	}
 
 	public void mapToOBXs(ORU_R01 message, List<Encounter> encounterList)
 			throws HL7Exception, DataTypeException {
 		int orderIndex = 0;
+		message.getPATIENT_RESULT()
+		.getORDER_OBSERVATION(orderIndex)
+		.getOBSERVATIONReps();
 		for (Encounter e : encounterList) {
 			int obxIndex = 0;
 			for (Obs observation : e.getAllObs()) {
