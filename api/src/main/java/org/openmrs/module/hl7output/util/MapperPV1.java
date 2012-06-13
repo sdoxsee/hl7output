@@ -11,11 +11,21 @@ import ca.uhn.hl7v2.model.v25.segment.PV1;
 
 public class MapperPV1 {
 
+	private final Constants constants;
+
+	public MapperPV1(Constants constants) {
+		this.constants = constants;
+	}
+
+	public Constants getConstants() {
+		return constants;
+	}
+
 	public void mapToPV1(PV1 pv1, List<Encounter> encounterList)
 			throws DataTypeException, HL7Exception {
 		for (Encounter encounter : encounterList) {
-			pv1.getSetIDPV1().setValue(RHEAHL7Constants.IDPV1);
-			pv1.getPatientClass().setValue(RHEAHL7Constants.PATIENT_CLASS);
+			pv1.getSetIDPV1().setValue(getConstants().getProperty("IDPV1"));
+			pv1.getPatientClass().setValue(getConstants().getProperty("PATIENT_CLASS"));
 			pv1.getAssignedPatientLocation().getFacility().getNamespaceID()
 					.setValue(encounter.getLocation().getDescription());
 			if (encounter.getProvider().getId() != null)

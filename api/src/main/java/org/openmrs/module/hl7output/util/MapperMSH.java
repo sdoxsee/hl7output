@@ -9,37 +9,51 @@ import ca.uhn.hl7v2.model.v25.segment.MSH;
 
 public class MapperMSH {
 
+	private final Constants constants;
+
+	public MapperMSH(Constants constants) {
+		this.constants = constants;
+	}
+
+	public Constants getConstants() {
+		return constants;
+	}
+
 	protected void mapToMSH(MSH msh) throws DataTypeException {
-		msh.getFieldSeparator().setValue(RHEAHL7Constants.FIELD_SEPARATOR);//
-		msh.getEncodingCharacters().setValue(
-				RHEAHL7Constants.ENCODING_CHARACTERS);//
+		msh.getFieldSeparator()
+			.setValue(getConstants().getFieldSeparator());//
+		msh.getEncodingCharacters()
+			.setValue(getConstants().getEncodingCharacters());//
 		msh.getVersionID().getInternationalizationCode().getIdentifier()
-				.setValue(RHEAHL7Constants.INTERNATIONALIZATION_CODE);//
-		msh.getVersionID().getVersionID().setValue(RHEAHL7Constants.VERSION);//
-		msh.getDateTimeOfMessage().getTime().setValue(getCurrentDate());//
+			.setValue(getConstants().getInternationalizationCode());//
+		msh.getVersionID().getVersionID()
+			.setValue(getConstants().getVersion());//
+		msh.getDateTimeOfMessage().getTime()
+			.setValue(getCurrentDate());//
 		msh.getSendingApplication().getNamespaceID()
-				.setValue(RHEAHL7Constants.SENDING_APPLICATION);
+			.setValue(getConstants().getSendingApplication());
 		msh.getSendingFacility().getNamespaceID()
-				.setValue(RHEAHL7Constants.SENDING_FACILITY);//
+			.setValue(getConstants().getSendingFacility());//
 		msh.getMessageType().getMessageCode()
-				.setValue(RHEAHL7Constants.MESSAGE_TYPE);//
+			.setValue(getConstants().getMessageType());//
 		msh.getMessageType().getTriggerEvent()
-				.setValue(RHEAHL7Constants.TRIGGER_EVENT);//
+			.setValue(getConstants().getTriggerEvent());//
 		msh.getMessageType().getMessageStructure()
-				.setValue(RHEAHL7Constants.MESSAGE_STRUCTURE);//
+			.setValue(getConstants().getMessageStructure());//
 		msh.getReceivingApplication().getNamespaceID()
-				.setValue(RHEAHL7Constants.RECEIVING_APPLICATION);
+			.setValue(getConstants().getReceivingApplication());
 		msh.getReceivingFacility().getNamespaceID()
-				.setValue(RHEAHL7Constants.RECEIVING_FACILITY);//
+			.setValue(getConstants().getReceivingFacility());//
 		msh.getProcessingID().getProcessingID()
-				.setValue(RHEAHL7Constants.PROCESSING_ID);//
+			.setValue(getConstants().getProcessingID());//
 		msh.getProcessingID().getProcessingMode()
-				.setValue(RHEAHL7Constants.PROCESSING_MODE);//
-		msh.getMessageControlID().setValue(UUID.randomUUID().toString());//
-	
-		msh.getAcceptAcknowledgmentType().setValue(RHEAHL7Constants.ACK_TYPE);
-		msh.getApplicationAcknowledgmentType().setValue(
-				RHEAHL7Constants.APPLICATION_ACK_TYPE);
+			.setValue(getConstants().getProcessingMode());//
+		msh.getMessageControlID()
+			.setValue(UUID.randomUUID().toString());//
+		msh.getAcceptAcknowledgmentType()
+			.setValue(getConstants().getAckType());
+		msh.getApplicationAcknowledgmentType()
+			.setValue(getConstants().getApplicationAckType());
 	}
 
 	String getCurrentDate() {

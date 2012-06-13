@@ -52,11 +52,11 @@ public class GenerateZPT_ZP1Test extends BaseModuleContextSensitiveTest{
 	 */
 		
 		MSH msh = message.getMSH();
-		assertEquals(BaobabHL7Constants.INTERNATIONALIZATION_CODE, msh.getVersionID().getInternationalizationCode().getIdentifier().getValue());
-		assertEquals(BaobabHL7Constants.VERSION, msh.getVersionID().getVersionID().getValue());
-		assertEquals(BaobabHL7Constants.SENDING_APPLICATION, msh.getSendingApplication().getNamespaceID().getValue());
-		assertEquals(BaobabHL7Constants.SENDING_FACILITY, msh.getSendingFacility().getNamespaceID().getValue());
-		assertEquals(BaobabHL7Constants.MESSAGE_TYPE, msh.getMessageType().getMessageCode().getValue());
+		assertEquals("MWI", msh.getVersionID().getInternationalizationCode().getIdentifier().getValue());
+		assertEquals("2.5", msh.getVersionID().getVersionID().getValue());
+		assertEquals("sendingApplication", msh.getSendingApplication().getNamespaceID().getValue());
+		assertEquals("Baobab Health Trust", msh.getSendingFacility().getNamespaceID().getValue());
+		assertEquals("ZPT", msh.getMessageType().getMessageCode().getValue());
 		
 		EVN evn = message.getEVN();
 		assertNotNull(evn.getRecordedDateTime().getTime().getValue());

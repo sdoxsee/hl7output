@@ -15,6 +15,7 @@ package org.openmrs.module.hl7output.util;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Properties;
 
 import org.openmrs.Encounter;
 import org.openmrs.Patient;
@@ -26,13 +27,13 @@ import ca.uhn.hl7v2.model.v25.message.ORU_R01;
 public class GenerateORU_R01 implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	private Mapper mapper;
+	private ORU_OR1Mapper mapper;
 	
 	public GenerateORU_R01() {
-		this(new Mapper(Context.getConceptService()));
+		this(new ORU_OR1Mapper(Context.getConceptService(), new Constants(GenerateORU_R01.class.getResourceAsStream("rhea.properties"))));
 	}
 	
-	public GenerateORU_R01(Mapper mapper) {
+	public GenerateORU_R01(ORU_OR1Mapper mapper) {
 		this.mapper = mapper;
 	}
 	

@@ -19,11 +19,17 @@ import ca.uhn.hl7v2.model.v25.datatype.TS;
 import ca.uhn.hl7v2.model.v25.segment.OBX;
 
 public class MapperOBX {
-	
-	private final ConceptService conceptService;
 
-	public MapperOBX(ConceptService conceptService) {
+	private final ConceptService conceptService;
+	private final Constants constants;
+
+	public MapperOBX(ConceptService conceptService, Constants constants) {
 		this.conceptService = conceptService;
+		this.constants = constants;
+	}
+
+	public Constants getConstants() {
+		return constants;
 	}
 
 	public void mapToOBX(OBX obx, Obs observation, int obxIndex)
@@ -31,8 +37,7 @@ public class MapperOBX {
 		mapToOBX(obx, observation);
 		obx.getSetIDOBX().setValue(obxIndex + "");
 
-		ConceptDatatype datatype = observation.getConcept()
-				.getDatatype();
+		ConceptDatatype datatype = observation.getConcept().getDatatype();
 		// if numeric value
 		if (isNumeric(obx, datatype)) {
 			mapToNumericObx(obx, observation);
@@ -44,67 +49,67 @@ public class MapperOBX {
 			mapToCodedObx(obx, observation);
 		}
 	}
-	
+
 	public void mapToOBX(OBX obx, Obs obs) throws HL7Exception,
 			DataTypeException {
-			
-				Collection<ConceptMap> conceptMappings = obs.getConcept()
-						.getConceptMappings();
-			
-				for (ConceptMap conceptMap : conceptMappings) {
-					if (conceptMap.getSource().getHl7Code()
-							.equals(RHEAHL7Constants.RW_CS)) {
-						obx.getObservationIdentifier().getIdentifier()
-								.setValue(conceptMap.getSourceCode());
-					}
-					if (conceptMap.getSource().getHl7Code()
-							.equals(RHEAHL7Constants.RW_CN)) {
-						obx.getObservationIdentifier().getText()
-								.setValue(conceptMap.getSourceCode());
-					}
-				}
-			
-				if (obx.getObservationIdentifier().getText().getValue() == null
-						|| obx.getObservationIdentifier().getText().getValue()
-								.equals("")) {
-					obx.getObservationIdentifier().getText()
-							.setValue(obs.getConcept().getName().toString());
-				}
-				obx.getObservationIdentifier().getNameOfCodingSystem()
-						.setValue(RHEAHL7Constants.NAME_OF_CODING_SYSTEM);
+
+		Collection<ConceptMap> conceptMappings = obs.getConcept()
+				.getConceptMappings();
+
+		for (ConceptMap conceptMap : conceptMappings) {
+			if (conceptMap.getSource().getHl7Code()
+					.equals(getConstants().getRW_CS())) {
+				obx.getObservationIdentifier().getIdentifier()
+						.setValue(conceptMap.getSourceCode());
 			}
-	
+			if (conceptMap.getSource().getHl7Code()
+					.equals(getConstants().getProperty("RW_CN"))) {
+				obx.getObservationIdentifier().getText()
+						.setValue(conceptMap.getSourceCode());
+			}
+		}
+
+		if (obx.getObservationIdentifier().getText().getValue() == null
+				|| obx.getObservationIdentifier().getText().getValue()
+						.equals("")) {
+			obx.getObservationIdentifier().getText()
+					.setValue(obs.getConcept().getName().toString());
+		}
+		obx.getObservationIdentifier().getNameOfCodingSystem()
+				.setValue(getConstants().getProperty("NAME_OF_CODING_SYSTEM"));
+	}
+
 	boolean isCoded(ConceptDatatype datatype) {
 		return datatype
 				.equals(conceptService
-						.getConceptDatatypeByName(RHEAHL7Constants.CONCEPT_DATATYPE_CODED));
+						.getConceptDatatypeByName(getConstants().getProperty("CONCEPT_DATATYPE_CODED")));
 	}
 
 	boolean isText(ConceptDatatype datatype) {
 		return datatype
 				.equals(conceptService
-						.getConceptDatatypeByName(RHEAHL7Constants.CONCEPT_DATATYPE_TEXT));
+						.getConceptDatatypeByName(getConstants().getProperty("CONCEPT_DATATYPE_TEXT")));
 	}
 
 	boolean isDateOrDatetime(ConceptDatatype datatype) {
 		return datatype
 				.equals(conceptService
-						.getConceptDatatypeByName(RHEAHL7Constants.CONCEPT_DATATYPE_DATETIME))
+						.getConceptDatatypeByName(getConstants().getProperty("CONCEPT_DATATYPE_DATETIME")))
 				|| datatype
 						.equals(conceptService
-								.getConceptDatatypeByName(RHEAHL7Constants.CONCEPT_DATATYPE_DATE));
+								.getConceptDatatypeByName(getConstants().getProperty("CONCEPT_DATATYPE_DATE")));
 	}
 
 	boolean isNumeric(OBX obx, ConceptDatatype datatype) {
 		return datatype
 				.equals(conceptService
-						.getConceptDatatypeByName(RHEAHL7Constants.CONCEPT_DATATYPE_NUMERIC));
+						.getConceptDatatypeByName(getConstants().getProperty("CONCEPT_DATATYPE_NUMERIC")));
 	}
 
 	void mapToCodedObx(OBX obx, Obs observation) throws HL7Exception,
 			DataTypeException {
 
-		obx.getValueType().setValue(RHEAHL7Constants.VALUE_TYPE_CE);
+		obx.getValueType().setValue(getConstants().getProperty("VALUE_TYPE_CE"));
 
 		CE ce = new CE(obx.getMessage());
 		Concept concept = observation.getValueCoded();
@@ -114,7 +119,7 @@ public class MapperOBX {
 
 		for (ConceptMap conceptMap : conceptValueMappings) {
 			if (conceptMap.getSource().getHl7Code()
-					.equals(RHEAHL7Constants.RW_CN)) {
+					.equals(getConstants().getProperty("RW_CN"))) {
 				ce.getText().setValue(conceptMap.getSourceCode());
 			}
 			if (conceptMap.getSource().getHl7Code().equals("RW_AC")) {
@@ -142,7 +147,7 @@ public class MapperOBX {
 	void mapToTextObx(OBX obx, Obs observation) throws HL7Exception,
 			DataTypeException {
 
-		obx.getValueType().setValue(RHEAHL7Constants.VALUE_TYPE_ST);
+		obx.getValueType().setValue(getConstants().getProperty("VALUE_TYPE_ST"));
 		ST st = new ST(obx.getMessage());
 		st.setValue(observation.getValueText());
 		obx.getObservationValue(0).setData(st);
@@ -156,7 +161,7 @@ public class MapperOBX {
 	void mapToDateOrDatetimeObx(OBX obx, Obs obs) throws HL7Exception,
 			DataTypeException {
 
-		obx.getValueType().setValue(RHEAHL7Constants.VALUE_TYPE_TS);
+		obx.getValueType().setValue(getConstants().getProperty("VALUE_TYPE_TS"));
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		TS ts = new TS(obx.getMessage());
 		ts.getTime().setValue(sdf.format(obs.getValueDatetime()));
@@ -169,7 +174,7 @@ public class MapperOBX {
 
 	void mapToNumericObx(OBX obx, Obs observation) throws HL7Exception,
 			DataTypeException {
-		obx.getValueType().setValue(RHEAHL7Constants.VALUE_TYPE_NM);
+		obx.getValueType().setValue(getConstants().getProperty("VALUE_TYPE_NM"));
 
 		NM nm = new NM(obx.getMessage());
 		nm.setValue(observation.getValueNumeric() + "");
@@ -183,7 +188,7 @@ public class MapperOBX {
 				obx.getUnits().getIdentifier()
 						.setValue(conceptNumeric.getUnits());
 				obx.getUnits().getNameOfCodingSystem()
-						.setValue(RHEAHL7Constants.UNIT_CODING_SYSTEM);
+						.setValue(getConstants().getProperty("UNIT_CODING_SYSTEM"));
 			}
 		}
 		obx.getObservationValue(0).setData(nm);

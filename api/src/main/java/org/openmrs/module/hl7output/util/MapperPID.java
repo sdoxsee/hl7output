@@ -14,6 +14,16 @@ import ca.uhn.hl7v2.model.v25.segment.PID;
 
 public class MapperPID {
 
+	private final Constants constants;
+
+	public MapperPID(Constants constants) {
+		this.constants = constants;
+	}
+
+	public Constants getConstants() {
+		return constants;
+	}
+
 	protected void mapToPID(PID pid, Patient patient) throws DataTypeException,
 			HL7Exception {
 		Cohort singlePatientCohort = new Cohort();
@@ -24,19 +34,20 @@ public class MapperPID {
 						singlePatientCohort,
 						Context.getPatientService()
 								.getPatientIdentifierTypeByName(
-										RHEAHL7Constants.IDENTIFIER_TYPE));
+										getConstants().getProperty("IDENTIFIER_TYPE")));
 
-		pid.getSetIDPID().setValue(RHEAHL7Constants.IDPID);
+		pid.getSetIDPID().setValue(getConstants().getProperty("IDPID"));
 		pid.getPatientIdentifierList(0)
 				.getIDNumber()
 				.setValue(
 						patientIdentifierMap.get(patientIdentifierMap.keySet()
 								.iterator().next()));
 		pid.getPatientIdentifierList(0).getIdentifierTypeCode()
-				.setValue(RHEAHL7Constants.IDENTIFIER_TYPE_CODE);
+				.setValue(getConstants().getProperty("IDENTIFIER_TYPE_CODE"));
 		pid.getPatientName(0).getFamilyName().getSurname()
 				.setValue(patient.getFamilyName());
-
+		pid.getPatientName(0).getGivenName()
+				.setValue(patient.getGivenName());
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
 		Date dob = patient.getBirthdate();
 		Date dod = patient.getDeathDate();

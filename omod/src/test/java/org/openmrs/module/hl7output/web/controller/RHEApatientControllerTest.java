@@ -13,7 +13,6 @@ import org.junit.Test;
 import org.openmrs.Location;
 import org.openmrs.PersonAttributeType;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.hl7output.util.RHEAHL7Constants;
 import org.openmrs.test.BaseModuleContextSensitiveTest;
 import org.openmrs.test.Verifies;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -50,9 +49,9 @@ public class RHEApatientControllerTest extends BaseModuleContextSensitiveTest {
 		assertNotNull(r01);
 		assertTrue(r01 instanceof ORU_R01);	
 		
-		assertEquals(r01.getMSH().getVersionID().getInternationalizationCode().getIdentifier().getValue(),RHEAHL7Constants.INTERNATIONALIZATION_CODE);
-		assertEquals(r01.getMSH().getSendingApplication().getNamespaceID().getValue(), RHEAHL7Constants.SENDING_APPLICATION);
-		assertEquals(r01.getMSH().getSendingFacility().getNamespaceID().getValue(),RHEAHL7Constants.SENDING_FACILITY);
+		assertEquals(r01.getMSH().getVersionID().getInternationalizationCode().getIdentifier().getValue(),"RWA");
+		assertEquals(r01.getMSH().getSendingApplication().getNamespaceID().getValue(), "sendingApplication");
+		assertEquals(r01.getMSH().getSendingFacility().getNamespaceID().getValue(),"Shared Health Record");
 		
 		PID pid = r01.getPATIENT_RESULT().getPATIENT().getPID();
 		

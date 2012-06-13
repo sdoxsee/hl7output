@@ -42,17 +42,17 @@ public class GenerateORU_R01Test extends BaseModuleContextSensitiveTest{
 		MSH msh = r01.getMSH();
 		
 		assertEquals(msh.getVersionID().getInternationalizationCode().getIdentifier().getValue(),
-		    RHEAHL7Constants.INTERNATIONALIZATION_CODE);
-		assertEquals(msh.getVersionID().getVersionID().getValue(), RHEAHL7Constants.VERSION);
-		assertEquals(msh.getSendingApplication().getNamespaceID().getValue(),RHEAHL7Constants.SENDING_APPLICATION);
-		assertEquals(msh.getSendingFacility().getNamespaceID().getValue(),RHEAHL7Constants.SENDING_FACILITY);
-		assertEquals(msh.getMessageType().getMessageCode().getValue(),RHEAHL7Constants.MESSAGE_TYPE);
+		    "RWA");
+		assertEquals(msh.getVersionID().getVersionID().getValue(), "2.5");
+		assertEquals(msh.getSendingApplication().getNamespaceID().getValue(), "sendingApplication");
+		assertEquals(msh.getSendingFacility().getNamespaceID().getValue(),"Shared Health Record");
+		assertEquals(msh.getMessageType().getMessageCode().getValue(),"ORU");
 		
 		//Validate the ORC segment
 		
 		ORC orc = r01.getPATIENT_RESULT().getORDER_OBSERVATION().getORC();
 		
-		 orc.getPlacerOrderNumber().getNamespaceID().setValue(RHEAHL7Constants.PROVIDER_SENDING_APPLICATION);
+		 orc.getPlacerOrderNumber().getNamespaceID().setValue("sendingApplication");
 		 assertEquals(orc.getOrderingProvider(0).getFamilyName().getSurname().toString(), eList.get(0).getProvider().getFamilyName());
 
 		 assertEquals(orc.getOrderingProvider(0).getGivenName().toString(), eList.get(0).getProvider().getGivenName());
